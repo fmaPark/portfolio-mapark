@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="박민아 포트폴리오 · 사람과 문제를 이해하는 개발자">
+<title>박민아 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top"><span>Portfolio</span><span>2026.10 기준</span></div>
+    <div class="name"><h1 class="kr">박민아</h1><span class="en">Min-Ah Park</span></div>
+    <p class="role">Full-Stack Developer · Frontend 중심</p>
+    <p class="thesis">사람과 문제를 이해하는 개발자</p>
+    <ul class="lead">
+      <li>B2B AI 솔루션 개발 1년 10개월 · FE 리드, 풀스택</li>
+      <li>게임 개발 연합동아리 약 70명의 내부 업무 플랫폼 총괄 PO · 개발, 운영 중</li>
+    </ul>
+    <dl class="contact">
+      <dt>EMAIL</dt>
+      <dd><span class="email" id="email">mapark.dev@gmail.com</span><button class="btn-ghost" id="copy-email" type="button">복사</button></dd>
+      <dt>GITHUB</dt>
+      <dd><a href="https://github.com/fmaPark" target="_blank" rel="noopener noreferrer">github.com/fmaPark</a></dd>
+      <dt>EDUCATION</dt>
+      <dd>경희대학교 컴퓨터공학과 졸업 · 2024.08</dd>
+    </dl>
+    <nav class="toc" id="toc" aria-label="목차" data-collapsed="false">
+      <div class="toc-head"><span>목차</span><button class="toc-fold" id="toc-fold" type="button" aria-controls="toc-list" aria-expanded="true" aria-label="목차 접기" title="목차 접기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button></div>
+      <ul class="toc-list" id="toc-list">
+        <li><a href="#stack">Tech Stack</a></li>
+        <li><a href="#work">Work Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#certs">Certifications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="sec" id="stack" aria-labelledby="h-stack">
+    <div class="sec-head"><h2 id="h-stack">Tech Stack</h2><span>쓴 곳은 아래 경력·프로젝트에 표시</span></div>
+    <div class="stack">
+      <div class="row"><div class="rail">Frontend</div><ul class="chips"><li>SvelteKit</li><li>TypeScript</li><li>React</li><li>Next.js</li></ul></div>
+      <div class="row"><div class="rail">Backend</div><ul class="chips"><li>Java</li><li>Quarkus</li><li>MyBatis</li><li>Python</li><li>FastAPI</li><li>PostgreSQL</li></ul></div>
+      <div class="row"><div class="rail">AI · Infra</div><ul class="chips"><li>MCP (FastMCP)</li><li>Docker Compose</li><li>Nginx</li><li>Jenkins</li><li>Claude Code</li></ul></div>
+    </div>
+  </section>
+
+  <section class="sec" id="work" aria-labelledby="h-work">
+    <div class="sec-head"><h2 id="h-work">Work Experience</h2><span>총 2년 4개월</span></div>
+
+    <article class="row">
+      <div class="rail"><b>2024.07 ~ 2026.05</b><span>1년 10개월</span></div>
+      <div class="body">
+        <div>
+          <h3>ALLBIGDAT <small>(주)올빅뎃</small></h3>
+          <p class="sub">SW엔지니어링팀 연구원 · 정규직</p>
+        </div>
+        <div class="product">
+          <h4>DataNova Lens <span class="mono">2026.02 ~ 2026.05</span></h4>
+          <p class="sub">문서 기반 AI 지식 검색 서비스 · 3인 팀</p>
+          <ul>
+            <li>제안서 기반 기능 정의서·IA 작성</li>
+            <li>Java 백엔드 문서 등록~LLM 응답 흐름 구현 (엔드포인트 30개)</li>
+            <li>AI팀과 API 계약 정의, DATALUX REST 연동</li>
+            <li>AI Expo 2026 시연</li>
+          </ul>
+          <ul class="chips"><li>Java</li><li>Quarkus</li><li>MyBatis</li><li>RAG</li></ul>
+        </div>
+        <div class="product">
+          <h4>DATALUX <span class="mono">2025.01 ~ 2026.03</span></h4>
+          <p class="sub">멀티모달 AI 문서이해 솔루션 · 풀스택 4인 팀</p>
+          <ul>
+            <li>FE 리드, AI 추론 결과 검수 화면 등 약 60% 구현</li>
+            <li>Quarkus 백엔드 초기 세팅, JWT 인증·권한 판정 쿼리·서버측 마스킹 개발</li>
+            <li>GS인증 1등급 대응 단독 수행 (결함 53건 처리)</li>
+          </ul>
+          <ul class="chips"><li>SvelteKit</li><li>TypeScript</li><li>Quarkus</li><li>PostgreSQL</li></ul>
+        </div>
+        <div class="product">
+          <h4>Label-it <span class="mono">2024.07 ~ 2024.09</span></h4>
+          <p class="sub">데이터 라벨링 솔루션</p>
+          <ul>
+            <li>로그인 등 화면 3개 디자인 개편, 기존 데이터 흐름 영향 없이 반영</li>
+          </ul>
+          <ul class="chips"><li>React</li><li>TypeScript</li></ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="row">
+      <div class="rail"><b>2023.06 ~ 2023.12</b><span>6개월</span></div>
+      <div class="body">
+        <div>
+          <h3>ALLBIGDAT <small>(주)올빅뎃</small></h3>
+          <p class="sub">개발팀 인턴</p>
+        </div>
+        <ul>
+          <li>대학 시간표 데이터 수집 자동화 (Python·FastAPI)</li>
+          <li>라벨링 솔루션 QA (JMeter·Jest)</li>
+          <li>회사 제안으로 정규직 전환</li>
+        </ul>
+        <ul class="chips"><li>Python</li><li>FastAPI</li><li>JMeter</li><li>Jest</li></ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec" id="projects" aria-labelledby="h-projects">
+    <div class="sec-head"><h2 id="h-projects">Projects</h2><span>카드를 누르면 구조와 과정</span></div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="schem" aria-hidden="true">
+          <div class="hub">
+            <div class="node core"><strong>hgm_workspace</strong><small>조직도 · 권한의 원천</small></div>
+            <ul class="spokes">
+              <li><span>Discord 역할</span></li>
+              <li><span>Google Drive 공유</span></li>
+              <li><span>Plane 멤버십</span></li>
+            </ul>
+          </div>
+          <div class="hub-foot"><span>전자결재</span><span>회의록</span><span>회원·권한</span><span>학습</span></div>
+        </div>
+        <div class="card-body">
+          <p class="card-meta">2026.01 ~ 진행 중 · 운영 중 · 팀 2인 → 11인</p>
+          <h3>hgm_workspace</h3>
+          <p>게임 개발 연합동아리(약 70명)의 회의록·전자결재·회원 관리·학습 등 내부 업무 플랫폼</p>
+          <ul class="facts">
+            <li>권한 4축 설계로 조직개편을 코드 수정 없이 반영</li>
+            <li>결재 양식 약 20종, 개발 배포 없이 관리자가 등록</li>
+            <li>학습(LMS) 모듈 스키마부터 화면까지 단독 구현</li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <button class="btn-open" type="button" data-open="hgm">구조와 과정 보기</button>
+          <span class="mono note">총괄 PO · FE/BE 개발 · 테크리드</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="schem" aria-hidden="true">
+          <ol class="chain">
+            <li><span>설계</span></li>
+            <li><span>계획</span></li>
+            <li><span>프롬프트</span></li>
+            <li><span>실행</span></li>
+          </ol>
+          <div class="boundary">
+            <div><span class="ok">정적 분석 룰 31종 → 등급</span></div>
+            <div><span>LLM</span><span>→</span><span class="cut">등급</span><span>검토 필요로 분리</span></div>
+            <div><span>정답지·벤치마크는 별도 저장소</span></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-meta">2026.08 · 8일 · 2026 ICT 표준 챌린지 출품</p>
+          <h3>안심코드</h3>
+          <p>TTA 표준 기반 코드 안전등급 진단 서비스</p>
+          <ul class="facts">
+            <li>AI 위임 개발 문서 체인 설계 (설계 → 계획 → 프롬프트 → 실행)</li>
+            <li>정답지 선확정·벤치마크 저장소 분리·CI 불변식으로 AI 자기 채점 차단</li>
+            <li>TTA 표준 4종 → 진단 룰 31종, 등급 판정에서 LLM 배제</li>
+          </ul>
+        </div>
+        <div class="card-actions">
+          <button class="btn-open" type="button" data-open="ansim">구조와 과정 보기</button>
+          <span class="linkline"><a href="https://github.com/fmaPark/ansim-code" target="_blank" rel="noopener noreferrer">ansim-code</a><a href="https://github.com/fmaPark/ansim-benchmark" target="_blank" rel="noopener noreferrer">ansim-benchmark</a></span>
+        </div>
+      </article>
+    </div>
+
+    <p class="subhead">그 밖의 프로젝트</p>
+    <div class="minor">
+      <article class="row">
+        <div class="rail"><b>2026.07</b><span>2인 팀</span></div>
+        <div class="body">
+          <h4>PlayMCP 공모전 출품 MCP 서버 2종</h4>
+          <p class="sub">아이디에이션 외 기획 구체화·구현, AI 적극 활용</p>
+          <ul>
+            <li><a href="https://github.com/fmaPark/heat-safe-guard" target="_blank" rel="noopener noreferrer">HeatSafeGuard</a> · 폭염 위험 조회·작업중지 판정·온열질환 응급대응 (기상청 API)</li>
+            <li><a href="https://github.com/fmaPark/backstep-mcp" target="_blank" rel="noopener noreferrer">BackStep</a> · 만석 광역버스 기점 방향 역주행 좌석 추천 (경기도 버스정보 API)</li>
+          </ul>
+          <ul class="chips"><li>Python</li><li>FastMCP</li><li>Docker</li><li>pytest</li></ul>
+        </div>
+      </article>
+      <article class="row">
+        <div class="rail"><b>2024.04 ~ 2024.06</b><span>학부 · 단독</span></div>
+        <div class="body">
+          <h4>유튜브 뉴스 댓글 분석을 통한 ChatGPT 여론조사</h4>
+          <p class="sub">댓글 5,871건 수집·감성 분류·의미연결망 분석</p>
+          <p class="linkline"><a href="https://github.com/fmaPark/Analysis-of-ChatGPT-News-Comment-Corpus" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
+      </article>
+      <article class="row">
+        <div class="rail"><b>2023.06 ~ 2023.07</b><span>KHUDA 3기</span></div>
+        <div class="body">
+          <h4>생성모델을 활용한 AI 소설 생성</h4>
+          <p class="sub">KoAlpaca 파인튜닝 소설 창작 AI, 데이터 수집·전처리 담당</p>
+          <p class="linkline"><a href="https://github.com/khuda-3rd/team8_AI_novel_generator" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="activities" aria-labelledby="h-act">
+    <div class="sec-head"><h2 id="h-act">Activities</h2><span>동아리 · 오픈소스</span></div>
+    <article class="row">
+      <div class="rail"><b>2024.07 ~ 진행 중</b></div>
+      <div class="body">
+        <div>
+          <h3>회기동 막걸리 <small>게임 개발 연합동아리 · 약 70명</small></h3>
+        </div>
+        <div class="product">
+          <h4>인프라팀장 → 운영본부장 <span class="mono">2026.03 ~ 진행 중</span></h4>
+          <p class="sub">hgm_workspace 총괄 PO 겸임 · 위 Projects 참고</p>
+        </div>
+        <div class="product">
+          <h4>쿼리도 슈팅 개발 PM → PO <span class="mono">2024.07 ~ 2026.03</span></h4>
+          <p class="sub">로그라이크 게임 · 팀 20명</p>
+          <ul>
+            <li>일정·협업 프로세스 관리</li>
+            <li>GitHub·Asana·Discord API 연동 협업 자동화</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <article class="row">
+      <div class="rail"><b>2023.02 ~ 2023.07</b></div>
+      <div class="body">
+        <h3>KHUDA 3기 NLP Track <small>경희대 데이터분석·AI 동아리</small></h3>
+      </div>
+    </article>
+    <article class="row">
+      <div class="rail"><b>Open Source</b></div>
+      <div class="body">
+        <h3>wafflebase <small>웹 기반 협업 오피스 스위트</small></h3>
+        <p>표·CSV 형식 스키마 출력 수정 PR 머지 · <a href="https://github.com/wafflebase/wafflebase/pull/705" target="_blank" rel="noopener noreferrer">#705</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec" id="awards" aria-labelledby="h-awards">
+    <div class="sec-head"><h2 id="h-awards">Awards</h2><span>수상</span></div>
+    <article class="row">
+      <div class="rail"><b>2023.08.12</b></div>
+      <div class="body">
+        <h3>장려상 <small>중앙대학교 인공지능인문학 학술논문경연대회</small></h3>
+        <p><a href="https://drive.google.com/file/d/1HMHuVXXpmQiZsvG9FyCdXpj4UNSMatM0/view?usp=sharing" target="_blank" rel="noopener noreferrer">텍스트 마이닝을 활용한 저출산 키워드 분석: 소셜 네트워크 탐색을 통해</a></p>
+        <p class="sub">공저 · 기술 파트 전담</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="sec" id="certs" aria-labelledby="h-certs">
+    <div class="sec-head"><h2 id="h-certs">Certifications</h2><span>자격증</span></div>
+    <div class="certs">
+      <div><span>AI 프롬프트 활용능력(AI-POT) 1급</span><span class="date">2026.07</span><span class="org">한국생산성본부</span></div>
+      <div><span>SQL 개발자(SQLD)</span><span class="date">2024.06</span><span class="org">한국데이터산업진흥원</span></div>
+      <div><span>TOPCIT 3수준 (524점)</span><span class="date">2024.05</span><span class="org">정보통신기획평가원</span></div>
+      <div><span>데이터분석 준전문가(ADsP)</span><span class="date">2022.11</span><span class="org">한국데이터산업진흥원</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="next">쓰는 사람 가까이에서, 만든 것이 쓰이는 걸 확인하며 일하고 싶습니다.</p>
+    <div class="fine"><span>mapark.dev@gmail.com · github.com/fmaPark</span><span>2026.10 기준</span></div>
+  </footer>
+</div>
+
+<!-- ===================== hgm_workspace ===================== -->
+<dialog class="case" id="dlg-hgm" aria-labelledby="t-hgm">
+  <div class="case-head"><p>PROJECT · 2026.01 ~ 진행 중</p><button class="btn-ghost" type="button" data-close>닫기</button></div>
+  <div class="case-body">
+    <div class="case-title">
+      <h2 id="t-hgm">hgm_workspace</h2>
+      <p class="one">게임 개발 연합동아리(약 70명)의 회의록·전자결재·회원 관리·학습 등 내부 업무 플랫폼. 조직도와 권한을 한 곳에서 정하면 Discord·Google Drive·Plane으로 전파되는 구조</p>
+      <dl class="meta">
+        <div><dt>기간</dt><dd>2026.01 ~ 진행 중 (운영 중)</dd></div>
+        <div><dt>팀</dt><dd>2인 → 11인 (기획·개발·AI 엔지니어·QA)</dd></div>
+        <div><dt>역할</dt><dd>총괄 PO · FE/BE 개발 · 테크리드</dd></div>
+        <div><dt>스택</dt><dd>Next.js · React · FastAPI · PostgreSQL</dd></div>
+      </dl>
+      <p class="note">소스코드는 비공개 · 화면 속 회원 정보는 가림 처리</p>
+    </div>
+
+    <section class="block">
+      <h3>배경</h3>
+      <ul>
+        <li>노션·아사나·구글 드라이브·디스코드 병행, 결재·공지는 카카오워크</li>
+        <li>새 부원이 들어올 때마다 도구별 접근 권한을 따로 부여, 인프라팀의 관리 지점 과다</li>
+        <li>카카오워크 가격 정책 변경으로 계속 사용 곤란</li>
+        <li>목표는 흩어진 접근과 관리를 한곳으로 모으는 것. 기존 도구는 유지하고 권한의 원천을 하나로</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>구조</h3>
+      <div class="diagram" role="img" aria-label="hgm_workspace가 조직도와 권한의 원천이 되어 Discord 역할, Google Drive 공유, Plane 멤버십으로 권한을 전파하는 구조">
+        <span class="cap">조직도 · 권한 변경 → 외부 도구로 전파</span>
+        <div class="arch">
+          <div class="core-box">
+            <strong>hgm_workspace · 조직도와 권한의 원천</strong>
+            <div class="mods">
+              <span>전자결재<small>카카오워크 대체</small></span>
+              <span>회의록<small>녹음 → STT → 요약 → Asana</small></span>
+              <span>회원·권한<small>4축 배정</small></span>
+              <span>학습<small>LMS</small></span>
+            </div>
+          </div>
+          <ul class="targets">
+            <li><span>Discord<small>로그인 · 역할 동기화</small></span></li>
+            <li><span>Google Drive<small>공유 권한 전파</small></span></li>
+            <li><span>Plane<small>프로젝트 멤버십 · 문의 연결</small></span></li>
+          </ul>
+        </div>
+        <div class="layers"><span>Next.js 정적 export</span>→<span>FastAPI</span>→<span>PostgreSQL</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>내가 한 일</h3>
+
+      <div class="part">
+        <div class="part-head"><h4>회원·권한 모델</h4><span class="who lead">설계·구현 주도 · 외부 도구 동기화 구현은 팀원</span></div>
+        <ul>
+          <li>운영팀의 실제 관리 방식 조사 (명단, 조직도 배정, 직책·직무, 경고·출석), 설문으로 추가 기능 수집</li>
+          <li>배정 축 4개: 소속 · 직무 · 직책 · 회원 상태</li>
+          <li>직책과 권한이 딱 맞지 않는다는 전제. 기능을 CRUD 기준으로 정의하고 API 권한과 화면 버튼·사이드바를 묶어 권한 item으로 설계</li>
+        </ul>
+        <div class="diagram" role="img" aria-label="권한 item이 권한 세트로, 권한 세트가 역할로, 역할이 소속·직무·직책·회원 상태 4축에 배정되는 흐름">
+          <ol class="flow">
+            <li><span>권한 item<small>CRUD · API · 버튼·사이드바</small></span></li>
+            <li><span>권한 세트</span></li>
+            <li><span>역할</span></li>
+            <li class="hl"><span>4축 배정<small>소속 · 직무 · 직책 · 회원 상태</small></span></li>
+          </ol>
+        </div>
+        <div class="tablewrap">
+          <table class="perm">
+            <thead><tr><th>회의록 권한 세트</th><th>할 수 있는 일</th><th>배정 대상</th></tr></thead>
+            <tbody>
+              <tr><td><span class="code">MET-User</span></td><td>요약·변환</td><td>수습회원 이상 전체</td></tr>
+              <tr><td><span class="code">MET-Master</span></td><td>+ 시스템 인스트럭션·키워드 설정</td><td>수습회원 이상 + 파트장 이상</td></tr>
+              <tr><td><span class="code">MET-Admin</span></td><td>+ API 관리</td><td>인프라팀 보안 담당자</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="figs"><figure class="fig"><img src="images/hgm-perm-set.webp" alt="권한 세트 관리 화면. 세트 목록과 DISC-Admin 세트에 포함된 Discord 기능 권한 체크 목록" width="1600" height="870" loading="lazy"><figcaption>권한 세트 관리 · 기능 권한을 세트 단위로 묶어 역할에 할당</figcaption></figure><figure class="fig"><img src="images/hgm-role.webp" alt="역할 상세 화면. 연결 소속·직무·직책·상태와 연결된 권한 세트 7개, 배정 회원 목록(이름·이메일 가림)" width="1600" height="870" loading="lazy"><figcaption>역할 상세 · 4축 연결 조건과 권한 세트, 조건에 맞는 회원 자동 배정</figcaption></figure></div>
+        <p class="result"><b>결과</b><span>26-2 조직개편(팀·파트 신설, 드라이브 폴더 체계 변경)을 코드 수정 없이 반영. 신규 인원 도구 권한 부여 3단계 이상 → 조직도 배정 1단계</span></p>
+      </div>
+
+      <div class="part">
+        <div class="part-head"><h4>전자결재 양식 빌더</h4><span class="who lead">요구사항 정의·프론트 주도 · 백엔드 공동</span></div>
+        <ul>
+          <li>결재 본문을 자유 텍스트로 받자 "총액은 어떻게 받나", "선택지 항목은 어떻게 표준화하나" 문의 발생</li>
+          <li>운영팀의 결재 내역 시트 관리 니즈 → 결재 본문을 구조화된 데이터로 만드는 것이 요구사항</li>
+          <li>JSON Schema 동적 폼(RJSF) 리서치·도입 결정. 범용성 · 라이선스 · 용처 커버 기준</li>
+          <li>결재선은 고정 담당자 지정과 상위 결재선 동적 지정(팀장 → 본부장 → 부회장 → 회장)을 분리 설계</li>
+        </ul>
+        <div class="figs"><figure class="fig"><img src="images/hgm-form.webp" alt="기안 작성 화면. 인사이동신청서 양식의 안내문과 필수 입력 항목" width="1600" height="870" loading="lazy"><figcaption>기안 작성 · 관리자가 빌더로 등록한 양식이 입력 폼으로 표시</figcaption></figure><figure class="fig"><img src="images/hgm-approval-line.webp" alt="결재선 양식 수정 화면. 기안자의 팀장·본부장 동적 결재권자와 회장·부회장 고정 직책" width="1600" height="870" loading="lazy"><figcaption>결재선 양식 · 기안자 기준 동적 결재권자와 고정 직책을 나눠 구성</figcaption></figure></div>
+        <p class="result"><b>결과</b><span>결재 양식 약 20종 전부 관리자가 빌더로 등록, 양식 추가에 개발 배포 0회. 임원진·운영팀 사용 중</span></p>
+      </div>
+
+      <div class="part">
+        <div class="part-head"><h4>학습(LMS) 모듈</h4><span class="who solo">단독 구현</span></div>
+        <ul>
+          <li>약 한 달, DB 스키마부터 화면까지: 테이블 13 · 엔드포인트 55 · 화면 라우트 17</li>
+          <li>학습 경로, 과정·지식 저작, 발행 승인, 진도·수료, 배지·XP·레벨, 통계</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <div class="part-head"><h4>회의록 실패 상태 정의</h4><span class="who shared">프론트 담당 · 요약 파이프라인은 팀원 구현</span></div>
+        <ul>
+          <li>드라이브 업로드 실패와 요약 실패가 모두 500으로 내려와 화면에는 "실패"만 표시, 재시도 불가</li>
+          <li>상태 코드 체계 제안, 백엔드 담당자와 확정. 1단계 STT 변환과 2단계 AI 요약 분리</li>
+          <li>실패한 단계부터 다시 실행 (재변환 / 재시도 버튼 분리), 이전 설정값 유지</li>
+        </ul>
+        <div class="diagram" role="img" aria-label="STOPPED에서 1단계 STT 변환으로 TRANSCRIBED, 2단계 AI 요약으로 SUMMARIZED가 되고 실패하면 FAILED에서 해당 단계부터 다시 실행하는 흐름">
+          <ol class="flow">
+            <li><span>STOPPED<small>녹음 종료</small></span></li>
+            <li><span>TRANSCRIBED<small>1단계 STT 변환</small></span></li>
+            <li class="hl"><span>SUMMARIZED<small>2단계 AI 요약</small></span></li>
+          </ol>
+          <span class="cap" style="margin:12px 0 0">처리 중 PROCESSING · 실패 시 FAILED → 1단계는 재변환, 2단계는 재시도</span>
+        </div>
+        <figure class="fig"><img src="images/hgm-meeting.webp" alt="회의록 요약 설정 창. 1단계 STT 변환 완료, 2단계 AI 요약 실패 표시와 목록의 재시도 버튼(작성자 가림)" width="1600" height="870" loading="lazy"><figcaption>요약 설정 · 1단계 변환은 완료, 실패한 2단계 요약만 다시 실행</figcaption></figure>
+        <p class="result"><b>결과</b><span>일시적 서버 오류 외에는 담당자 문의 없이 사용자가 직접 재시도</span></p>
+      </div>
+
+      <div class="part">
+        <div class="part-head"><h4>팀 운영 · 개발 규칙</h4><span class="who lead">총괄 PO · 테크리드</span></div>
+        <ul>
+          <li>2026.03 인프라팀 신설 이후 팀 2인 → 11인 확장</li>
+          <li>온보딩: 문서(컨벤션·코드 구조·README) → 간단 과제 → 담당 영역 이슈 assign → 코드리뷰</li>
+          <li>주 1회 1시간 회의, 회의 2시간 전 주간보고 시트(실적·계획·이슈) 작성 후 아젠다 구성</li>
+          <li>FE/BE 테크리드 분리, GitHub Issue 관리 규정</li>
+          <li>타인 PR 리뷰 68건, OWASP Top 10 기준 보안 검토 포함</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <div class="part-head"><h4>AI 활용 경계</h4><span class="who shared">작업 방식</span></div>
+        <ul>
+          <li>DB 설계 · 큰 화면 구조 · 폴더 구조 · 디자인 패턴은 사람, 그 안을 채우는 코드는 AI</li>
+          <li>계획 단계 설계를 AI에 맡기고 사람이 검토, 규칙 파일·금지 훅으로 경계 설정, 설계 문서를 코드와 함께 형상관리</li>
+          <li>사례: 조직도 '대표 지정'과 전자결재 연동에서 AI가 소속의 <span class="code">is_owner</span> 대신 회원의 <span class="code">is_manager</span> 참조 → 결재선 오류 → 롤백. DB 전체에 설계 의도를 적은 description을 추가해 AI가 읽는 맥락 보강</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>기술 결정</h3>
+      <ul>
+        <li>정적 export(SPA) 배포: 개인 서버 운영 · AWS 이관 계획 · 적은 리소스 → 서버 부하와 배포 관리 지점 축소. 내부 서비스라 SEO 불필요</li>
+        <li>프론트 레포를 백엔드 레포에 subtree로 흡수: FE·BE를 함께 고치는 이슈가 많아 PR 분리가 불필요</li>
+        <li>React 선택: 기능 확장 가능성이 큰 제품이라 상태관리를 세밀하게 다룰 수 있는 쪽</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>결과</h3>
+      <div class="stats">
+        <div class="stat"><b>약 70명</b><span>사용 대상 동아리 규모</span></div>
+        <div class="stat"><b>2인 → 11인</b><span>개발·운영 팀 확장</span></div>
+        <div class="stat"><b>20종 · 배포 0회</b><span>관리자가 직접 등록한 결재 양식</span></div>
+        <div class="stat"><b>3단계+ → 1단계</b><span>신규 인원 도구 권한 부여</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>한계와 배운 점</h3>
+      <ul>
+        <li>사용량 데이터 없이 출시해 "얼마나 도움이 됐는가"에 수치로 답하지 못함 → Microsoft Clarity 도입 예정</li>
+        <li>2026.08 결재선 회귀: release의 수정분을 master로 체리픽 후 상신 실패, 4시간 19분 만에 롤백. 원인은 체리픽 재검증 절차 부재</li>
+        <li>만드는 것과 계속 굴러가게 하는 것은 다른 일. 조직이 커지면 코드보다 역할과 기준이 먼저 병목</li>
+      </ul>
+    </section>
+
+  </div>
+</dialog>
+
+<!-- ===================== 안심코드 ===================== -->
+<dialog class="case" id="dlg-ansim" aria-labelledby="t-ansim">
+  <div class="case-head"><p>PROJECT · 2026.08</p><button class="btn-ghost" type="button" data-close>닫기</button></div>
+  <div class="case-body">
+    <div class="case-title">
+      <h2 id="t-ansim">안심코드</h2>
+      <p class="one">소스코드를 TTA 표준 조항 단위로 진단해 안전등급을 매기는 서비스. 2026 ICT 표준 챌린지 출품</p>
+      <dl class="meta">
+        <div><dt>기간</dt><dd>2026.08 · 8일 (실투입 3일)</dd></div>
+        <div><dt>팀</dt><dd>2인 (풀스택 개발 · 기획 팀원)</dd></div>
+        <div><dt>역할</dt><dd>개발 프로세스 설계·수행, AI 위임 개발</dd></div>
+        <div><dt>공개</dt><dd>저장소 2개 전부 공개</dd></div>
+      </dl>
+    </div>
+
+    <section class="block">
+      <h3>배경</h3>
+      <ul>
+        <li>공모전 주제가 "TTA 표준 × 바이브코딩". AI로 만드는 과정 자체가 심사 대상</li>
+        <li>만드는 제품이 코드를 진단해 등급을 매기는 서비스 → "판정이 맞다"를 숫자로 증명해야 함</li>
+        <li>두 과제가 반대 방향: 사람이 코드를 쓸 시간이 없어 AI 위임을 극대화해야 하고, 그 AI가 만든 진단기를 AI가 채점하면 자기 채점</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>구조</h3>
+      <div class="diagram" role="img" aria-label="제안서에서 설계 문서, 구현 계획, 세션별 프롬프트 문서, 구현 세션으로 이어지는 문서 체인">
+        <span class="cap">AI에 위임하는 문서 체인 · 단계마다 산출물이 다음 단계의 입력</span>
+        <ol class="flow">
+          <li><span>제안서</span></li>
+          <li><span>설계 문서<small>TDD · ADR</small></span></li>
+          <li><span>구현 계획<small>28태스크</small></span></li>
+          <li><span>세션별 프롬프트 문서<small>PR 리뷰</small></span></li>
+          <li class="hl"><span>구현 세션 6개</span></li>
+        </ol>
+      </div>
+      <div class="diagram" role="img" aria-label="정적 분석 결과만 등급에 반영되고 LLM 결과는 등급에 닿지 않도록 분리한 신뢰 경계">
+        <span class="cap">신뢰 경계 · 등급은 정적 분석 결과만으로 산출</span>
+        <div class="split">
+          <div class="good"><strong>정적 분석 · 진단 룰 31종</strong><ul><li>등급 안심 · 주의 · 위험 산출</li><li>같은 코드는 언제나 같은 등급</li></ul></div>
+          <div><strong>LLM</strong><ul><li>맥락 판정, 쉬운 설명 생성</li><li>결과는 '검토 필요'로 분리, 등급 승격·강등 불가</li><li>시크릿 코드는 전송하지 않음</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>내가 한 일</h3>
+      <div class="part">
+        <div class="part-head"><h4>위임하는 구조</h4><span class="who lead">프로세스 제안·수행 · 설계 문서는 기획 팀원과 공동</span></div>
+        <ul>
+          <li>제안서 → 설계 문서 → 구현 계획(28태스크) → 세션별 프롬프트 문서 → 구현 세션 6개</li>
+          <li>프롬프트를 대화창이 아닌 저장소 문서로 작성, PR 리뷰 대상으로 관리</li>
+          <li>지켜야 할 규칙은 문서에, 프롬프트는 참조만. 맥락 없는 팀원도 프롬프트만으로 작업 인계</li>
+        </ul>
+      </div>
+      <div class="part">
+        <div class="part-head"><h4>결과를 믿지 않는 구조</h4><span class="who solo">본인 설계</span></div>
+        <ul>
+          <li>정답지(벤치마크 명세)를 룰 구현 전에 확정, 기획 팀원의 PR 승인을 통과 조건으로 설정 (3라운드 후 승인)</li>
+          <li>벤치마크를 별도 공개 저장소로 분리: 자기 진단 등급 오염 방지, 측정 스크립트의 정규식이 판정 룰을 무력화하는 문제 차단</li>
+          <li>정답지 불변식 6종을 벤치마크 저장소 CI로 push마다 검사</li>
+          <li>겉모습은 취약 코드와 닮았지만 안전한 대조군으로 오탐 측정</li>
+        </ul>
+      </div>
+      <div class="part">
+        <div class="part-head"><h4>표준 → 진단 룰</h4><span class="who solo">본인 설계</span></div>
+        <ul>
+          <li>TTA 표준 4종을 진단 룰 31종으로 변환, 리포트가 발견마다 근거 조항 번호 인용</li>
+          <li>원본 소스코드는 격리 디렉터리에만 두고 스캔 종료 시 무조건 파기</li>
+          <li>진단 대상 코드에 LLM을 겨냥한 지시문 4종을 심어 시험 → 등급 유지, 지시 반영 0건</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>결과</h3>
+      <div class="stats">
+        <div class="stat"><b>8일</b><span>데모·소스·영상·기획서 제출</span></div>
+        <div class="stat"><b>31종</b><span>표준 조항에서 도출한 진단 룰</span></div>
+        <div class="stat"><b>오탐 0건</b><span>결함 없는 표본 11개 기준 (자가 측정)</span></div>
+        <div class="stat"><b>202건</b><span>자동화 테스트 통과</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>한계와 배운 점</h3>
+      <ul>
+        <li>공공데이터 실물이 표본으로 가정한 형식과 달라 해당 룰의 측정치 무효 처리. 표본 기반 수치에는 처음부터 표본 기준임을 표시했어야 함</li>
+        <li>인젝션 시험 회차에 LLM 판정이 실행되지 않아, 증명된 것은 LLM이 실패해도 등급이 정상 산출되는 구조까지</li>
+        <li>측정하는 주체가 측정 대상을 고칠 수 있으면 측정이 아님. 저장소 분리·CI 불변식·프롬프트 금지 조항의 공통 근거</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>링크</h3>
+      <p class="linkline">
+        <a href="https://github.com/fmaPark/ansim-code" target="_blank" rel="noopener noreferrer">github.com/fmaPark/ansim-code</a>
+        <a href="https://github.com/fmaPark/ansim-benchmark" target="_blank" rel="noopener noreferrer">github.com/fmaPark/ansim-benchmark</a>
+      </p>
+    </section>
+  </div>
+</dialog>
+
+<button class="theme-fab" id="theme-toggle" type="button" aria-label="다크 모드로 전환" title="다크 모드로 전환">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
