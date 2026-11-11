@@ -15,14 +15,14 @@
 <div class="wrap">
 
   <header class="hero">
-    <div class="hero-top"><span>Portfolio</span><span>2026.10 기준</span></div>
+    <div class="hero-top"><span>Portfolio</span></div>
     <div class="name"><h1 class="kr">박민아</h1><span class="en">Min-Ah Park</span></div>
-    <p class="role">Full-Stack Developer · Frontend 중심</p>
+    <p class="role">Full-Stack Developer</p>
     <p class="thesis">사람과 문제를 이해하는 개발자</p>
-    <ul class="lead">
+    <!-- <ul class="lead">
       <li>B2B AI 솔루션 개발 1년 10개월 · FE 리드, 풀스택</li>
       <li>게임 개발 연합동아리 약 70명의 내부 업무 플랫폼 총괄 PO · 개발, 운영 중</li>
-    </ul>
+    </ul> -->
     <dl class="contact">
       <dt>EMAIL</dt>
       <dd><span class="email" id="email">mapark.dev@gmail.com</span><button class="btn-ghost" id="copy-email" type="button">복사</button></dd>
@@ -47,10 +47,11 @@
   <section class="sec" id="stack" aria-labelledby="h-stack">
     <div class="sec-head"><h2 id="h-stack">Tech Stack</h2></div>
     <div class="stack">
-      <div class="row"><div class="rail">Frontend</div><ul class="chips"><li>TypeScript</li><li>React</li><li>SvelteKit</li><li>Next.js</li></ul></div>
+      <div class="row"><div class="rail">Frontend</div><ul class="chips"><li>TypeScript</li><li>React</li><li>SvelteKit</li><li>Next.js</li><li>Tailwind CSS</li></ul></div>
       <div class="row"><div class="rail">Backend</div><ul class="chips"><li>Java</li><li>Quarkus</li><li>MyBatis</li><li>Python</li><li>FastAPI</li><li>PostgreSQL</li></ul></div>
-      <div class="row"><div class="rail">AI · Infra</div><ul class="chips"><li>Docker Compose</li><li>Nginx</li><li>Jenkins</li></ul></div>
-      <div class="row"><div class="rail">Tools</div><ul class="chips"><li>Claude Code</li></ul></div>
+      <div class="row"><div class="rail">AI · Infra</div><ul class="chips"><li>Docker Compose</li><li>Nginx</li><li>Jenkins</li><li>Git</li></ul></div>
+      <div class="row"><div class="rail">Tools</div><ul class="chips"><li>Claude Code</li><li>Codex</li><li>Copilot</li></ul></div>
+      <!-- <div class="row"><div class="rail">etc</div><ul class="chips"><li>Figma</li></ul></div> -->
     </div>
   </section>
 
@@ -66,11 +67,11 @@
         </div>
         <div class="product">
           <h4>DataNova Lens <span class="mono">2026.02 ~ 2026.05</span></h4>
-          <p class="sub">문서 기반 AI 지식 검색 서비스</p>
+          <p class="sub">RAG 기반 문서 지식 검색 서비스</p>
           <ul>
             <li>제안서 기반 기능 정의서·IA 작성</li>
-            <li>Java 백엔드 문서 등록~LLM 응답 흐름 구현 (->RAG 구축으로 수정 필요)</li>
-            <li>AI팀과 API 계약 정의, DATALUX REST 연동</li>
+            <li>Java 기반 RAG 백엔드 구축: faiss 기반 유사도 검색(Retrieval) 구현, 증강·생성 과정에서의 LLM 추론 파이프라인 구현</li>
+            <li>DATALUX 문서를 RAG 검색 대상으로 연동</li>
             <li><b>AI Expo 2026 시연</b></li>
           </ul>
           <ul class="chips"><li>Java</li><li>Quarkus</li><li>MyBatis</li><li>SvelteKit</li><li>TypeScript</li></ul>
@@ -79,8 +80,10 @@
           <h4>DATALUX <span class="mono">2025.01 ~ 2026.03</span></h4>
           <p class="sub">멀티모달 AI 문서이해 솔루션</p>
           <ul>
-            <li>FE 리드, AI 추론 결과 검수 화면 등 약 60% 구현</li>
-            <li>Quarkus 백엔드 초기 세팅, JWT 인증·권한 판정 쿼리·서버측 마스킹 개발</li>
+            <li>FE 리드: Svelte 기반 공용 컴포넌트 라이브러리 구축, 화면 약 60% 구현</li>
+            <li>Quarkus 기반 백엔드 구축: JWT 인증 구현, 다단계 접근 권한 판정 쿼리 작성, OpenCV 기반 서버 마스킹 구현</li>
+            <li>Docker Compose 기반 온프레미스 설치 패키지 구축</li>
+            <li>외부 디자인 업체 협업 관리 및 디자인 시스템 개편</li>
             <li><b>GS인증 1등급 대응 단독 수행 및 취득</b></li>
           </ul>
           <ul class="chips"><li>SvelteKit</li><li>TypeScript</li><li>Quarkus</li><li>PostgreSQL</li></ul>
@@ -105,7 +108,7 @@
         </div>
         <ul>
           <li>대학원 시간표 데이터 수집 자동화 API 구현</li>
-          <li>라벨링 솔루션 QA: 부하 테스트, </li>
+          <li>라벨링 솔루션 QA: 부하 테스트, 단위 테스트 작성</li>
           <li>회사 제안으로 정규직 전환</li>
         </ul>
         <ul class="chips"><li>Python</li><li>FastAPI</li><li>JMeter</li><li>Jest</li></ul>
@@ -114,7 +117,7 @@
   </section>
 
   <section class="sec" id="projects" aria-labelledby="h-projects">
-    <div class="sec-head"><h2 id="h-projects">Projects</h2><span>카드를 누르면 구조와 과정</span></div>
+    <div class="sec-head"><h2 id="h-projects">Projects</h2></div>
 
     <div class="cards">
       <article class="card">
@@ -130,13 +133,14 @@
           <div class="hub-foot"><span>전자결재</span><span>회의록</span><span>회원·권한</span><span>학습</span></div>
         </div>
         <div class="card-body">
-          <p class="card-meta">2026.01 ~ 진행 중 · 운영 중 · 팀 2인 → 11인</p>
+          <p class="card-meta">2026.01 ~ 운영 중</p>
           <h3>hgm_workspace</h3>
-          <p>게임 개발 연합동아리(약 70명)의 회의록·전자결재·회원 관리·학습 등 내부 업무 플랫폼</p>
+          <p>게임 개발 연합동아리(약 70명)의 내부 업무 플랫폼</p>
           <ul class="facts">
-            <li>권한 4축 설계로 조직개편을 코드 수정 없이 반영</li>
-            <li>결재 양식 약 20종, 개발 배포 없이 관리자가 등록</li>
-            <li>학습(LMS) 모듈 스키마부터 화면까지 단독 구현</li>
+            <li>회의록·전자결재·회원 관리·학습 등 기능개발 총괄</li>
+            <li>문서·코드 형상관리 및 협업 프로세스 구축</li>
+            <li>RBAC 기반 권한 관리 체계 구축</li>
+            <li>JSON Schema 기반 전자결재 시스템 구축</li>
           </ul>
         </div>
         <div class="card-actions">
@@ -160,18 +164,18 @@
           </div>
         </div>
         <div class="card-body">
-          <p class="card-meta">2026.08 · 8일 · 2026 ICT 표준 챌린지 출품</p>
+          <p class="card-meta">2026.08 · 2026 ICT 표준 챌린지 출품</p>
           <h3>안심코드</h3>
           <p>TTA 표준 기반 코드 안전등급 진단 서비스</p>
           <ul class="facts">
             <li>AI 위임 개발 문서 체인 설계 (설계 → 계획 → 프롬프트 → 실행)</li>
-            <li>정답지 선확정·벤치마크 저장소 분리·CI 불변식으로 AI 자기 채점 차단</li>
+            <li>AI 산출물 검증 체계 구축: 정답지 선확정, 벤치마크 저장소 분리, CI 기반 정답지 무결성 검사</li>
             <li>TTA 표준 4종 → 진단 룰 31종, 등급 판정에서 LLM 배제</li>
           </ul>
         </div>
         <div class="card-actions">
           <button class="btn-open" type="button" data-open="ansim">구조와 과정 보기</button>
-          <span class="linkline"><a href="https://github.com/fmaPark/ansim-code" target="_blank" rel="noopener noreferrer">ansim-code</a><a href="https://github.com/fmaPark/ansim-benchmark" target="_blank" rel="noopener noreferrer">ansim-benchmark</a></span>
+          <span class="linkline">🔗<a href="https://github.com/fmaPark/ansim-code" target="_blank" rel="noopener noreferrer">ansim-code</a><a href="https://github.com/fmaPark/ansim-benchmark" target="_blank" rel="noopener noreferrer">ansim-benchmark</a></span>
         </div>
       </article>
     </div>
@@ -179,23 +183,23 @@
     <p class="subhead">그 밖의 프로젝트</p>
     <div class="minor">
       <article class="row">
-        <div class="rail"><b>2026.07</b><span>2인 팀</span></div>
+        <div class="rail"><b>2026.07</b></div>
         <div class="body">
           <h4>PlayMCP 공모전 출품 MCP 서버 2종</h4>
           <p class="sub">아이디에이션 외 기획 구체화·구현, AI 적극 활용</p>
           <ul>
-            <li><a href="https://github.com/fmaPark/heat-safe-guard" target="_blank" rel="noopener noreferrer">HeatSafeGuard</a> · 폭염 위험 조회·작업중지 판정·온열질환 응급대응 (기상청 API)</li>
-            <li><a href="https://github.com/fmaPark/backstep-mcp" target="_blank" rel="noopener noreferrer">BackStep</a> · 만석 광역버스 기점 방향 역주행 좌석 추천 (경기도 버스정보 API)</li>
+            <li>🔗 <a href="https://github.com/fmaPark/heat-safe-guard" target="_blank" rel="noopener noreferrer">HeatSafeGuard</a> · 폭염 위험 조회·작업중지 판정·온열질환 응급대응 (기상청 API)</li>
+            <li>🔗 <a href="https://github.com/fmaPark/backstep-mcp" target="_blank" rel="noopener noreferrer">BackStep</a> · 만석 광역버스 기점 방향 역주행 좌석 추천 (경기도 버스정보 API)</li>
           </ul>
           <ul class="chips"><li>Python</li><li>FastMCP</li><li>Docker</li><li>pytest</li></ul>
         </div>
       </article>
-      <article class="row">
+      <!-- <article class="row">
         <div class="rail"><b>2024.04 ~ 2024.06</b><span>학부 · 단독</span></div>
         <div class="body">
           <h4>유튜브 뉴스 댓글 분석을 통한 ChatGPT 여론조사</h4>
           <p class="sub">댓글 5,871건 수집·감성 분류·의미연결망 분석</p>
-          <p class="linkline"><a href="https://github.com/fmaPark/Analysis-of-ChatGPT-News-Comment-Corpus" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+          <p class="linkline">🔗 <a href="https://github.com/fmaPark/Analysis-of-ChatGPT-News-Comment-Corpus" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </div>
       </article>
       <article class="row">
@@ -203,9 +207,9 @@
         <div class="body">
           <h4>생성모델을 활용한 AI 소설 생성</h4>
           <p class="sub">KoAlpaca 파인튜닝 소설 창작 AI, 데이터 수집·전처리 담당</p>
-          <p class="linkline"><a href="https://github.com/khuda-3rd/team8_AI_novel_generator" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+          <p class="linkline">🔗 <a href="https://github.com/khuda-3rd/team8_AI_novel_generator" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         </div>
-      </article>
+      </article> -->
     </div>
   </section>
 
@@ -219,14 +223,16 @@
         </div>
         <div class="product">
           <h4>인프라팀장 → 운영본부장 <span class="mono">2026.03 ~ 진행 중</span></h4>
-          <p class="sub">hgm_workspace 총괄 PO 겸임 · 위 Projects 참고</p>
+          <ul>
+            <li>hgm_workspace 총괄 PO</li>
+            <li>동아리 운영/관리</li>
+          </ul>
         </div>
         <div class="product">
           <h4>쿼리도 슈팅 개발 PM → PO <span class="mono">2024.07 ~ 2026.03</span></h4>
-          <p class="sub">로그라이크 게임 · 팀 20명</p>
           <ul>
-            <li>일정·협업 프로세스 관리</li>
-            <li>GitHub·Asana·Discord API 연동 협업 자동화</li>
+            <li>로그라이크 게임 "쿼리도 슈팅" 총괄 PO</li>
+            <li>20명 규모 팀 일정·협업 프로세스 관리</li>
           </ul>
         </div>
       </div>
@@ -234,14 +240,12 @@
     <article class="row">
       <div class="rail"><b>2023.02 ~ 2023.07</b></div>
       <div class="body">
-        <h3>KHUDA 3기 NLP Track <small>경희대 데이터분석·AI 동아리</small></h3>
-      </div>
-    </article>
-    <article class="row">
-      <div class="rail"><b>Open Source</b></div>
-      <div class="body">
-        <h3>wafflebase <small>웹 기반 협업 오피스 스위트</small></h3>
-        <p>표·CSV 형식 스키마 출력 수정 PR 머지 · <a href="https://github.com/wafflebase/wafflebase/pull/705" target="_blank" rel="noopener noreferrer">#705</a></p>
+        <h3>KHUDA 3기 NLP Track <small>경희대학교 데이터분석·AI 동아리</small></h3>
+        <ul>
+          <li>MUZINZANG: 이미지 인식 기반 코디 추천 서비스</li>
+          <li>소설 창작 특화 생성 AI: KoAlpaca 파인튜닝</li>
+          <li>한국어 교육용 Paraphrasing 앱: 외국인 학습자용 문장 생성 앱, 2023 경희대학교 창의 자율 과제 공모 예심 통과</li>
+        </ul>
       </div>
     </article>
   </section>
@@ -252,7 +256,7 @@
       <div class="rail"><b>2023.08.12</b></div>
       <div class="body">
         <h3>장려상 <small>중앙대학교 인공지능인문학 학술논문경연대회</small></h3>
-        <p><a href="https://drive.google.com/file/d/1HMHuVXXpmQiZsvG9FyCdXpj4UNSMatM0/view?usp=sharing" target="_blank" rel="noopener noreferrer">텍스트 마이닝을 활용한 저출산 키워드 분석: 소셜 네트워크 탐색을 통해</a></p>
+        <p>🔗 <a href="https://drive.google.com/file/d/1HMHuVXXpmQiZsvG9FyCdXpj4UNSMatM0/view?usp=sharing" target="_blank" rel="noopener noreferrer">텍스트 마이닝을 활용한 저출산 키워드 분석: 소셜 네트워크 탐색을 통해</a></p>
         <p class="sub">공저 · 기술 파트 전담</p>
       </div>
     </article>
@@ -270,7 +274,7 @@
 
   <footer>
     <p class="next">쓰는 사람 가까이에서, 만든 것이 쓰이는 걸 확인하며 일하고 싶습니다.</p>
-    <div class="fine"><span>mapark.dev@gmail.com · github.com/fmaPark</span><span>2026.10 기준</span></div>
+    <div class="fine"><span>mapark.dev@gmail.com · github.com/fmaPark</span></div>
   </footer>
 </div>
 
