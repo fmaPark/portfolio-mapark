@@ -58,13 +58,12 @@
   <section class="sec" id="work" aria-labelledby="h-work">
     <div class="sec-head"><h2 id="h-work">Work Experience</h2><span>총 2년 4개월</span></div>
 
-    <article class="row">
-      <div class="rail"><b>2024.07 ~ 2026.05</b><span>1년 10개월</span></div>
+    <article class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><h3>ALLBIGDAT <small>(주)올빅뎃</small></h3><p class="sub">SW엔지니어링팀 연구원</p></div>
+        <p class="when">2024.07 ~ 2026.05 <span>· 1년 10개월</span></p>
+      </div>
       <div class="body">
-        <div>
-          <h3>ALLBIGDAT <small>(주)올빅뎃</small></h3>
-          <p class="sub">SW엔지니어링팀 연구원</p>
-        </div>
         <div class="product">
           <h4>DataNova Lens <span class="mono">2026.02 ~ 2026.05</span></h4>
           <p class="sub">RAG 기반 문서 지식 검색 서비스</p>
@@ -99,19 +98,20 @@
       </div>
     </article>
 
-    <article class="row">
-      <div class="rail"><b>2023.06 ~ 2023.12</b><span>6개월</span></div>
+    <article class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><h3>ALLBIGDAT <small>(주)올빅뎃</small></h3><p class="sub">개발팀 인턴</p></div>
+        <p class="when">2023.06 ~ 2023.12 <span>· 6개월</span></p>
+      </div>
       <div class="body">
-        <div>
-          <h3>ALLBIGDAT <small>(주)올빅뎃</small></h3>
-          <p class="sub">개발팀 인턴</p>
+        <div class="product">
+          <ul>
+            <li>대학원 시간표 데이터 수집 자동화 API 구현</li>
+            <li>라벨링 솔루션 QA: 부하 테스트, 단위 테스트 작성</li>
+            <li>회사 제안으로 정규직 전환</li>
+          </ul>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>JMeter</li><li>Jest</li></ul>
         </div>
-        <ul>
-          <li>대학원 시간표 데이터 수집 자동화 API 구현</li>
-          <li>라벨링 솔루션 QA: 부하 테스트, 단위 테스트 작성</li>
-          <li>회사 제안으로 정규직 전환</li>
-        </ul>
-        <ul class="chips"><li>Python</li><li>FastAPI</li><li>JMeter</li><li>Jest</li></ul>
       </div>
     </article>
   </section>
@@ -121,16 +121,9 @@
 
     <div class="cards">
       <article class="card">
-        <div class="schem" aria-hidden="true">
-          <div class="hub">
-            <div class="node core"><strong>hgm_workspace</strong><small>조직도 · 권한의 원천</small></div>
-            <ul class="spokes">
-              <li><span>Discord 역할</span></li>
-              <li><span>Google Drive 공유</span></li>
-              <li><span>Plane 멤버십</span></li>
-            </ul>
-          </div>
-          <div class="hub-foot"><span>전자결재</span><span>회의록</span><span>회원·권한</span><span>학습</span></div>
+        <div class="card-media">
+          <img src="images/hgm-cover.webp" alt="hgm_workspace 소개 이미지: 회의록 목록·학습·전자결재 화면" width="3200" height="1800" loading="lazy" decoding="async">
+          <span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
         </div>
         <div class="card-body">
           <p class="card-meta">2026.01 ~ 운영 중</p>
@@ -144,24 +137,15 @@
           </ul>
         </div>
         <div class="card-actions">
-          <button class="btn-open" type="button" data-open="hgm">구조와 과정 보기</button>
           <span class="mono note">총괄 PO · FE/BE 개발 · 테크리드</span>
         </div>
+        <button class="card-hit" type="button" data-open="hgm" aria-label="hgm_workspace 구조와 과정 보기"></button>
       </article>
 
       <article class="card">
-        <div class="schem" aria-hidden="true">
-          <ol class="chain">
-            <li><span>설계</span></li>
-            <li><span>계획</span></li>
-            <li><span>프롬프트</span></li>
-            <li><span>실행</span></li>
-          </ol>
-          <div class="boundary">
-            <div><span class="ok">정적 분석 룰 31종 → 등급</span></div>
-            <div><span>LLM</span><span>→</span><span class="cut">등급</span><span>검토 필요로 분리</span></div>
-            <div><span>정답지·벤치마크는 별도 저장소</span></div>
-          </div>
+        <div class="card-media">
+          <img src="images/ansim-cover.webp" alt="안심코드 소개 이미지: 진단 리포트와 근거 조항·수정 프롬프트 화면" width="3200" height="1800" loading="lazy" decoding="async">
+          <span class="card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></span>
         </div>
         <div class="card-body">
           <p class="card-meta">2026.08 · 2026 ICT 표준 챌린지 출품</p>
@@ -174,24 +158,27 @@
           </ul>
         </div>
         <div class="card-actions">
-          <button class="btn-open" type="button" data-open="ansim">구조와 과정 보기</button>
           <span class="linkline">🔗<a href="https://github.com/fmaPark/ansim-code" target="_blank" rel="noopener noreferrer">ansim-code</a><a href="https://github.com/fmaPark/ansim-benchmark" target="_blank" rel="noopener noreferrer">ansim-benchmark</a></span>
         </div>
+        <button class="card-hit" type="button" data-open="ansim" aria-label="안심코드 구조와 과정 보기"></button>
       </article>
     </div>
 
     <p class="subhead">그 밖의 프로젝트</p>
     <div class="minor">
-      <article class="row">
-        <div class="rail"><b>2026.07</b></div>
+      <article class="entry">
+        <div class="entry-head">
+          <div class="entry-title"><h4>PlayMCP 공모전 출품 MCP 서버 2종</h4><p class="sub">아이디에이션 외 기획 구체화·구현, AI 적극 활용</p></div>
+          <p class="when">2026.07</p>
+        </div>
         <div class="body">
-          <h4>PlayMCP 공모전 출품 MCP 서버 2종</h4>
-          <p class="sub">아이디에이션 외 기획 구체화·구현, AI 적극 활용</p>
-          <ul>
-            <li>🔗 <a href="https://github.com/fmaPark/heat-safe-guard" target="_blank" rel="noopener noreferrer">HeatSafeGuard</a> · 폭염 위험 조회·작업중지 판정·온열질환 응급대응 (기상청 API)</li>
-            <li>🔗 <a href="https://github.com/fmaPark/backstep-mcp" target="_blank" rel="noopener noreferrer">BackStep</a> · 만석 광역버스 기점 방향 역주행 좌석 추천 (경기도 버스정보 API)</li>
-          </ul>
-          <ul class="chips"><li>Python</li><li>FastMCP</li><li>Docker</li><li>pytest</li></ul>
+          <div class="product">
+            <ul>
+              <li>🔗 <a href="https://github.com/fmaPark/heat-safe-guard" target="_blank" rel="noopener noreferrer">HeatSafeGuard</a> · 폭염 위험 조회·작업중지 판정·온열질환 응급대응 (기상청 API)</li>
+              <li>🔗 <a href="https://github.com/fmaPark/backstep-mcp" target="_blank" rel="noopener noreferrer">BackStep</a> · 만석 광역버스 기점 방향 역주행 좌석 추천 (경기도 버스정보 API)</li>
+            </ul>
+            <ul class="chips"><li>Python</li><li>FastMCP</li><li>Docker</li><li>pytest</li></ul>
+          </div>
         </div>
       </article>
       <!-- <article class="row">
@@ -215,12 +202,12 @@
 
   <section class="sec" id="activities" aria-labelledby="h-act">
     <div class="sec-head"><h2 id="h-act">Activities</h2><span>동아리 · 오픈소스</span></div>
-    <article class="row">
-      <div class="rail"><b>2024.07 ~ 진행 중</b></div>
+    <article class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><h3>회기동 막걸리 <small>게임 개발 연합동아리 · 약 70명</small></h3></div>
+        <p class="when">2024.07 ~ 진행 중</p>
+      </div>
       <div class="body">
-        <div>
-          <h3>회기동 막걸리 <small>게임 개발 연합동아리 · 약 70명</small></h3>
-        </div>
         <div class="product">
           <h4>인프라팀장 → 운영본부장 <span class="mono">2026.03 ~ 진행 중</span></h4>
           <ul>
@@ -237,27 +224,35 @@
         </div>
       </div>
     </article>
-    <article class="row">
-      <div class="rail"><b>2023.02 ~ 2023.07</b></div>
+    <article class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><h3>KHUDA 3기 NLP Track <small>경희대학교 데이터분석·AI 동아리</small></h3></div>
+        <p class="when">2023.02 ~ 2023.07</p>
+      </div>
       <div class="body">
-        <h3>KHUDA 3기 NLP Track <small>경희대학교 데이터분석·AI 동아리</small></h3>
-        <ul>
-          <li>MUZINZANG: 이미지 인식 기반 코디 추천 서비스</li>
-          <li>소설 창작 특화 생성 AI: KoAlpaca 파인튜닝</li>
-          <li>한국어 교육용 Paraphrasing 앱: 외국인 학습자용 문장 생성 앱, 2023 경희대학교 창의 자율 과제 공모 예심 통과</li>
-        </ul>
+        <div class="product">
+          <ul>
+            <li>MUZINZANG: 이미지 인식 기반 코디 추천 서비스</li>
+            <li>소설 창작 특화 생성 AI: KoAlpaca 파인튜닝</li>
+            <li>한국어 교육용 Paraphrasing 앱: 외국인 학습자용 문장 생성 앱, 2023 경희대학교 창의 자율 과제 공모 예심 통과</li>
+          </ul>
+        </div>
       </div>
     </article>
   </section>
 
   <section class="sec" id="awards" aria-labelledby="h-awards">
     <div class="sec-head"><h2 id="h-awards">Awards</h2><span>수상</span></div>
-    <article class="row">
-      <div class="rail"><b>2023.08.12</b></div>
+    <article class="entry">
+      <div class="entry-head">
+        <div class="entry-title"><h3>장려상 <small>중앙대학교 인공지능인문학 학술논문경연대회</small></h3></div>
+        <p class="when">2023.08.12</p>
+      </div>
       <div class="body">
-        <h3>장려상 <small>중앙대학교 인공지능인문학 학술논문경연대회</small></h3>
-        <p>🔗 <a href="https://drive.google.com/file/d/1HMHuVXXpmQiZsvG9FyCdXpj4UNSMatM0/view?usp=sharing" target="_blank" rel="noopener noreferrer">텍스트 마이닝을 활용한 저출산 키워드 분석: 소셜 네트워크 탐색을 통해</a></p>
-        <p class="sub">공저 · 기술 파트 전담</p>
+        <div class="product">
+          <p>🔗 <a href="https://drive.google.com/file/d/1HMHuVXXpmQiZsvG9FyCdXpj4UNSMatM0/view?usp=sharing" target="_blank" rel="noopener noreferrer">텍스트 마이닝을 활용한 저출산 키워드 분석: 소셜 네트워크 탐색을 통해</a></p>
+          <p class="sub">공저 · 기술 파트 전담</p>
+        </div>
       </div>
     </article>
   </section>
