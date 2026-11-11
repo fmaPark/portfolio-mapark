@@ -77,6 +77,47 @@
   var hash = (location.hash || '').replace('#', '');
   if (dialogs[hash]) open(hash);
 
+  /* 상세 창: 서비스 화면 / 아키텍처 탭 */
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.setAttribute('tabindex', on ? '0' : '-1');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') n = tabs[0];
+        else if (e.key === 'End') n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+  });
+
+  /* 상세 창: 썸네일을 누르면 큰 이미지 교체 */
+  document.querySelectorAll('.gallery').forEach(function (g) {
+    var big = g.querySelector('.viewer img');
+    var btns = Array.prototype.slice.call(g.querySelectorAll('.thumbs button'));
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var thumb = b.querySelector('img');
+        big.src = b.getAttribute('data-src');
+        big.alt = b.getAttribute('data-alt');
+        if (thumb) { big.setAttribute('width', thumb.getAttribute('width')); big.setAttribute('height', thumb.getAttribute('height')); }
+        btns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      });
+    });
+  });
+
   var copyBtn = document.getElementById('copy-email');
   var email = document.getElementById('email');
   copyBtn.addEventListener('click', function () {
