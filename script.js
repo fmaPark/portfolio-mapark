@@ -65,6 +65,7 @@
     if (!d || d.open) return;
     if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
     d.scrollTop = 0;
+    d.querySelectorAll('.stats').forEach(fitStats);
   }
   document.querySelectorAll('[data-open]').forEach(function (btn) {
     btn.addEventListener('click', function () { open(btn.getAttribute('data-open')); });
@@ -76,6 +77,34 @@
   });
   var hash = (location.hash || '').replace('#', '');
   if (dialogs[hash]) open(hash);
+
+  /* 상세 창: 결과 수치를 한 줄로 맞춘다. 묶음 안에서 가장 긴 수치에 맞춰 같은 비율로 줄인다 */
+  function fitStats(group) {
+    [['b', 24, 10]].forEach(function (cfg) {
+      var els = Array.prototype.slice.call(group.querySelectorAll('.stat > ' + cfg[0]));
+      els.forEach(function (e) { e.style.fontSize = ''; });
+      var ratio = 1;
+      els.forEach(function (e) {
+        if (!e.clientWidth) return;
+        var r = document.createRange(); r.selectNodeContents(e);
+        var text = r.getBoundingClientRect().width; /* 소수점까지 잰 실제 글자 폭 */
+        if (text > e.clientWidth - 1) ratio = Math.min(ratio, (e.clientWidth - 2) / text);
+      });
+      if (ratio < 1) {
+        var size = Math.max(cfg[2], Math.floor(cfg[1] * ratio * 10) / 10);
+        els.forEach(function (e) { e.style.fontSize = size + 'px'; });
+      }
+    });
+  }
+  var statGroups = Array.prototype.slice.call(document.querySelectorAll('.stats'));
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(function (entries) { entries.forEach(function (en) { fitStats(en.target); }); });
+    statGroups.forEach(function (g) { ro.observe(g); });
+  }
+  Object.keys(dialogs).forEach(function (k) {
+    dialogs[k].addEventListener('toggle', function () { if (dialogs[k].open) dialogs[k].querySelectorAll('.stats').forEach(fitStats); });
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { statGroups.forEach(fitStats); });
 
   /* 상세 창: 서비스 화면 / 아키텍처 탭 */
   document.querySelectorAll('[data-tabs]').forEach(function (box) {
