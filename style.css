@@ -235,6 +235,7 @@ dialog.case::backdrop { background: rgba(8, 12, 10, .56); }
 .meta dd { margin: 2px 0 0; font-size: 14px; }
 .badge { justify-self: start; font: 600 12px/1 var(--font-body); color: var(--seal); background: var(--seal-soft); border-radius: 999px; padding: 7px 12px; }
 .meta .wide { grid-column: 1 / -1; }
+.case-title > .meta:first-child { padding-top: 0; padding-bottom: 18px; margin-bottom: 10px; }
 .meta .wide .chips { margin-top: 4px; }
 .block { display: grid; gap: 14px; }
 .block.deep { border-top: 1px solid var(--rule); padding-top: 36px; }
@@ -280,19 +281,10 @@ dialog.case::backdrop { background: rgba(8, 12, 10, .56); }
 .flow li span small { color: var(--ink-2); font-size: 11px; }
 .flow li + li::before { content: "→"; color: var(--seal); }
 .flow .hl span { border: 1.5px solid var(--seal); }
-.arch { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: center; min-width: 520px; }
-.arch .core-box { border: 1.5px solid var(--seal); background: var(--sheet); color: var(--ink); border-radius: 6px; padding: 14px; display: grid; gap: 10px; }
-.arch .core-box strong { font-size: 13.5px; }
-.mods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-.mods span { border: 1px solid var(--rule); border-radius: 4px; padding: 6px 8px; display: grid; gap: 1px; color: var(--ink); background: var(--tint); }
-.mods span small { color: var(--ink-2); font-size: 11px; }
-.targets { display: grid; gap: 10px; list-style: none; padding: 0; }
-.targets li { margin: 0; display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: center; gap: 8px; }
-.targets li::before { content: ""; height: 1px; background: var(--seal); }
-.targets li span { border: 1px dashed var(--ink-2); border-radius: 4px; padding: 7px 10px; color: var(--ink); background: var(--sheet); display: grid; gap: 1px; }
-.targets li span small { color: var(--ink-2); font-size: 11px; }
-.layers { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.layers span { padding: 4px 8px; border-radius: 3px; background: var(--seal-soft); color: var(--seal); }
+/* 아키텍처 다이어그램(Mermaid): 좁은 화면에서는 가로 스크롤 */
+.mmd { min-height: 120px; display: grid; place-items: center; }
+.mmd svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.mmd-msg { margin: 0; font-size: 12.5px; color: var(--ink-2); }
 .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; min-width: 520px; }
 .split > div { border: 1px solid var(--ink-2); border-radius: 6px; padding: 12px; background: var(--sheet); color: var(--ink); display: grid; gap: 6px; align-content: start; }
 .split > div.good { border: 1.5px solid var(--seal); }

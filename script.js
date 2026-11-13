@@ -106,6 +106,61 @@
   });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { statGroups.forEach(fitStats); });
 
+  /* 상세 창: 아키텍처 다이어그램(Mermaid). 탭을 처음 열 때 불러오고, 테마가 바뀌면 다시 그린다 */
+  var MERMAID_SRC = 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js';
+  var root = document.documentElement, mermaidLoading = null, mmdSeq = 0;
+  function loadMermaid() {
+    if (window.mermaid) return Promise.resolve(window.mermaid);
+    if (!mermaidLoading) {
+      mermaidLoading = new Promise(function (resolve, reject) {
+        var sc = document.createElement('script');
+        sc.src = MERMAID_SRC; sc.async = true;
+        sc.onload = function () { resolve(window.mermaid); };
+        sc.onerror = function () { mermaidLoading = null; reject(new Error('mermaid load failed')); };
+        document.head.appendChild(sc);
+      });
+    }
+    return mermaidLoading;
+  }
+  function themeVars() {
+    var cs = getComputedStyle(root);
+    function v(n) { return cs.getPropertyValue(n).trim(); }
+    return {
+      fontFamily: v('--font-body'), fontSize: '13px',
+      background: v('--tint'), primaryColor: v('--sheet'), primaryTextColor: v('--ink'), primaryBorderColor: v('--ink-2'),
+      secondaryColor: v('--tint'), tertiaryColor: v('--tint'), lineColor: v('--ink-2'), textColor: v('--ink'),
+      clusterBkg: v('--paper'), clusterBorder: v('--rule'), titleColor: v('--ink-2'), edgeLabelBackground: v('--tint'),
+      hl: v('--seal'), hlSoft: v('--seal-soft')
+    };
+  }
+  function renderDiagrams(scope) {
+    var boxes = Array.prototype.slice.call((scope || document).querySelectorAll('.mmd'));
+    boxes = boxes.filter(function (b) { return !b.closest('[hidden]'); });
+    if (!boxes.length) return;
+    loadMermaid().then(function (mermaid) {
+      var t = themeVars();
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'base', themeVariables: t, flowchart: { curve: 'basis', padding: 12, nodeSpacing: 28, rankSpacing: 46 } });
+      boxes.forEach(function (box) {
+        var mode = root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light');
+        if (box.getAttribute('data-rendered') === mode) return;
+        var src = document.getElementById(box.getAttribute('data-mmd')).textContent +
+          '\n  classDef hl fill:' + t.hlSoft + ',stroke:' + t.hl + ',stroke-width:1.5px,color:' + t.primaryTextColor;
+        mermaid.render('mmd-svg-' + (++mmdSeq), src).then(function (out) {
+          box.innerHTML = out.svg;
+          var svg = box.querySelector('svg');
+          if (svg) svg.setAttribute('aria-hidden', 'true');
+          box.setAttribute('data-rendered', mode);
+        }, function () { box.innerHTML = '<p class="mmd-msg">다이어그램을 그리지 못했습니다</p>'; });
+      });
+    }, function () {
+      boxes.forEach(function (box) { box.innerHTML = '<p class="mmd-msg">다이어그램을 불러오지 못했습니다. 네트워크 연결을 확인해 주세요</p>'; });
+    });
+  }
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function rerender() { renderDiagrams(document); }
+  if (window.MutationObserver) new MutationObserver(rerender).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  if (mq) { if (mq.addEventListener) mq.addEventListener('change', rerender); else if (mq.addListener) mq.addListener(rerender); }
+
   /* 상세 창: 서비스 화면 / 아키텍처 탭 */
   document.querySelectorAll('[data-tabs]').forEach(function (box) {
     var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
@@ -115,7 +170,7 @@
         t.setAttribute('aria-selected', on ? 'true' : 'false');
         t.setAttribute('tabindex', on ? '0' : '-1');
         var panel = document.getElementById(t.getAttribute('aria-controls'));
-        if (panel) panel.hidden = !on;
+        if (panel) { panel.hidden = !on; if (on) renderDiagrams(panel); }
       });
       if (focus) tab.focus();
     }

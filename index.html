@@ -275,23 +275,23 @@
 
 <!-- ===================== hgm_workspace ===================== -->
 <dialog class="case" id="dlg-hgm" aria-labelledby="t-hgm">
-  <div class="case-head"><p>PROJECT · 2026.01 ~ 운영 중</p><button class="btn-close" type="button" data-close aria-label="닫기" title="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="case-head"><p>PROJECT</p><button class="btn-close" type="button" data-close aria-label="닫기" title="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="case-body">
     <div class="case-title">
+      <dl class="meta">
+        <div><dt>Period</dt><dd>2026.01 ~ 운영 중</dd></div>
+        <div><dt>Position</dt><dd>총괄 PO · 풀스택 개발 · 테크리드</dd></div>
+        <div class="wide"><dt>Stack</dt><dd><ul class="chips"><li>Next.js</li><li>React</li><li>TypeScript</li><li>TanStack Query</li><li>FastAPI</li><li>SQLAlchemy</li><li>Alembic</li><li>PostgreSQL</li></ul></dd></div>
+      </dl>
       <p class="badge">운영 중</p>
       <h2 id="t-hgm">hgm_workspace</h2>
-      <p class="one">게임 개발 연합동아리(약 70명)의 회의록·전자결재·회원 관리·학습을 한곳에 모은 내부 업무 플랫폼. 여러 도구에 흩어져 있던 운영 업무를 통합하여 실제 운영에 사용 중</p>
-      <dl class="meta">
-        <div><dt>기간</dt><dd>2026.01 ~ 운영 중</dd></div>
-        <div><dt>역할</dt><dd>총괄 PO · 풀스택 개발 · 테크리드</dd></div>
-        <div class="wide"><dt>기술</dt><dd><ul class="chips"><li>Next.js</li><li>React</li><li>TypeScript</li><li>TanStack Query</li><li>FastAPI</li><li>SQLAlchemy</li><li>Alembic</li><li>PostgreSQL</li></ul></dd></div>
-      </dl>
+      <p class="one">게임 개발 연합동아리(약 70명)의 회의록·전자결재·회원 관리·학습이 하나의 권한 체계와 조직도를 공유하는 내부 업무 플랫폼. 여러 도구에 흩어져 있던 운영 업무를 통합하여 실제 운영에 사용 중</p>
     </div>
 
     <section class="block media" data-tabs>
       <div class="tabs" role="tablist" aria-label="hgm_workspace 서비스 화면과 아키텍처">
-        <button type="button" role="tab" id="hgm-tab-shots" aria-controls="hgm-panel-shots" aria-selected="true">서비스 화면</button>
-        <button type="button" role="tab" id="hgm-tab-arch" aria-controls="hgm-panel-arch" aria-selected="false" tabindex="-1">아키텍처</button>
+        <button type="button" role="tab" id="hgm-tab-shots" aria-controls="hgm-panel-shots" aria-selected="true">Screens</button>
+        <button type="button" role="tab" id="hgm-tab-arch" aria-controls="hgm-panel-arch" aria-selected="false" tabindex="-1">Architecture</button>
       </div>
       <div class="tab-panel" role="tabpanel" id="hgm-panel-shots" aria-labelledby="hgm-tab-shots">
         <div class="gallery">
@@ -306,44 +306,57 @@
         </div>
       </div>
       <div class="tab-panel" role="tabpanel" id="hgm-panel-arch" aria-labelledby="hgm-tab-arch" hidden>
-        <div class="diagram" role="img" aria-label="hgm_workspace 내부 업무 플랫폼의 모듈 4개(회의록, 전자결재, 회원·권한, 학습)와 Discord, Google Drive, Plane, STT·Gemini, Asana 외부 도구 연동. Next.js 정적 export에서 FastAPI, PostgreSQL로 이어지는 구성">
-          <span class="cap">내부 업무 플랫폼 · 모듈 4개와 외부 도구 연동</span>
-          <div class="arch">
-            <div class="core-box">
-              <strong>hgm_workspace · 내부 업무 플랫폼</strong>
-              <div class="mods">
-                <span>회의록<small>녹음 → STT → 요약 → Asana</small></span>
-                <span>전자결재<small>동적 양식 · 카카오워크 대체</small></span>
-                <span>회원·권한<small>RBAC · 외부 도구 권한 전파</small></span>
-                <span>학습<small>역할 기반 추천 · XP·배지</small></span>
-              </div>
-            </div>
-            <ul class="targets">
-              <li><span>Discord<small>로그인 · 역할 동기화 · 회의 녹음</small></span></li>
-              <li><span>Google Drive<small>공유 권한 · 녹음 파일 저장</small></span></li>
-              <li><span>Plane<small>프로젝트 멤버십</small></span></li>
-              <li><span>STT · Gemini<small>회의록 변환 · 요약</small></span></li>
-              <li><span>Asana<small>요약 → 태스크 등록</small></span></li>
-            </ul>
-          </div>
-          <div class="layers"><span>Next.js 정적 export</span>→<span>FastAPI</span>→<span>PostgreSQL</span></div>
+        <div class="diagram mmd-box" role="img" aria-label="hgm_workspace 시스템 아키텍처. Next.js 정적 export 앱(공용 셸·권한 게이트, TanStack Query, axios 클라이언트)이 운영 서버의 Nginx를 거쳐 FastAPI로 요청. FastAPI는 권한 레지스트리 기반 인가 뒤 회의록·전자결재·회원·권한·학습 모듈 라우터로 처리하고 PostgreSQL에 데이터와 동기화 잡을 저장. 같은 프로세스의 asyncio 워커가 잡을 처리해 Discord·Google Drive·Plane 권한을 동기화하고, Discord 봇이 회의를 녹음하며, APScheduler가 DB를 Google Drive에 백업. 모듈 라우터는 STT·Gemini·Asana를 호출. GitHub Actions가 pytest·vitest·Alembic 단일 head 검사 후 SSH로 배포하고 db_migration이 Alembic 마이그레이션을 적용">
+          <span class="cap">시스템 아키텍처 · 정적 export 프론트엔드, 단일 FastAPI 프로세스(인가 · 모듈 · 워커 · 봇), 외부 도구 동기화</span>
+          <div class="mmd" data-mmd="mmd-hgm-arch"><p class="mmd-msg">다이어그램 불러오는 중</p></div>
+          <script type="text/plain" id="mmd-hgm-arch">
+flowchart TB
+  fe["<b>Next.js 16 정적 export</b><br/>공용 셸 · 권한 게이트<br/>TanStack Query · axios 401 갱신 큐"]
+  ci["<b>GitHub Actions</b><br/>pytest · vitest<br/>Alembic 단일 head 검사"]
+  subgraph SRV["운영 서버 · Docker Compose"]
+    nginx["Nginx<br/>정적 파일 · /api 프록시"]
+    mig["db_migration<br/>alembic upgrade head"]
+    subgraph API["FastAPI"]
+      authz{{"has_permission<br/>권한 레지스트리 인가"}}
+      mods["모듈 라우터<br/>회의록 · 전자결재<br/>회원·권한 · 학습"]
+      workers[["asyncio 워커<br/>외부 동기화 · 알림"]]
+      bot[["Discord 봇<br/>회의 녹음"]]
+      sched[["APScheduler<br/>일일 DB 백업"]]
+    end
+    pg[("PostgreSQL 16<br/>데이터 · 잡 큐 · 이력")]
+  end
+  ext1["STT · Gemini · Asana"]
+  discord["Discord"]
+  drive["Google Drive"]
+  plane["Plane"]
+  fe -->|HTTPS| nginx --> authz --> mods
+  ci ---->|SSH 배포| mig --> pg
+  mods --> pg
+  mods ----> ext1
+  pg -->|잡 처리| workers
+  workers --> discord & drive & plane
+  bot --> discord
+  sched -->|pg_dump| drive
+  class authz,mods hl
+          </script>
         </div>
       </div>
     </section>
 
     <section class="block">
-      <h3>핵심 구현</h3>
+      <h3>Highlights</h3>
       <ul class="keys">
         <li><b>플랫폼 총괄</b>: 요구사항 정의(RFP) 기반으로 스택 선정·배포 및 운영 방식 결정. 지속적인 배포와 유지보수가 가능한 형상관리 원칙 수립</li>
-        <li><b>회원·권한 모듈</b>: 권한 → 권한 세트 → 역할 → 소속·직무·직책·회원 상태 배정, 변경 시 Discord·Google Drive·Plane으로 자동 전파</li>
-        <li><b>전자결재 모듈</b>: 결재 본문을 데이터로 다루는 JSON Schema 동적 양식 빌더, 고정·동적 결재선 분리</li>
-        <li><b>회의록 모듈</b>: Discord 녹음 → STT → Gemini 요약 → Asana 등록 AI 요약 파이프라인 개발, 단계별 상태로 실패 지점부터 재시도</li>
+        <li><b>회원·권한 모듈</b>: 전 모듈 공통 RBAC 인가 계층 구축: 권한 단위 API 접근·메뉴 노출 동시 제어, 조직 배정 변경 시 Discord·Google Drive·Plane 권한 자동 전파</li>
+        <li><b>프론트엔드 공통 기반</b>: 정적 export 기반 공용 레이아웃·권한 게이트·API 클라이언트·도메인별 쿼리 키 체계 구축</li>
+        <li><b>전자결재 모듈</b>: JSON Schema 동적 양식 빌더 기반 결재 본문 구조화, 고정·동적 결재선 분리</li>
+        <li><b>회의록 모듈</b>: Discord 녹음 → STT → Gemini 요약 → Asana 등록 AI 요약 파이프라인 개발, 단계별 상태 기반 실패 지점 재시도</li>
         <li><b>학습 모듈</b>: 조직도 역할 기반 추천 학습, XP·배지·레벨 등 단독 구현</li>
       </ul>
     </section>
 
     <section class="block">
-      <h3>결과</h3>
+      <h3>Results</h3>
       <div class="stats">
         <div class="stat"><b>약 70명</b><span>사용 대상 동아리 규모</span></div>
         <div class="stat"><b>20종 · 배포 0회</b><span>관리자가 직접 등록한 결재 양식</span></div>
@@ -353,14 +366,16 @@
     </section>
 
     <section class="block deep">
-      <h3>내가 한 일</h3>
+      <h3>Role</h3>
 
       <div class="part">
         <div class="part-head"><h4>회원·권한 모델</h4><span class="who lead">설계·구현 주도</span></div>
         <ul>
           <li>운영팀의 실제 관리 방식 조사 (명단, 조직도 배정, 직책·직무, 경고·출석), 설문으로 추가 기능 수집</li>
           <li>배정 축 4개: 소속 · 직무 · 직책 · 회원 상태</li>
-          <li>직책과 권한이 딱 맞지 않는다는 전제. 기능을 CRUD 기준으로 정의하고 API 권한과 화면 버튼·사이드바를 묶어 권한 item으로 설계</li>
+          <li>직책·권한 불일치 전제. CRUD 단위 기능 정의, API 권한과 화면 버튼·사이드바를 묶은 권한 item 설계</li>
+          <li>전 모듈 API 공통 권한 검사 구조 설계, 라우트 선언 기반 권한별 API 카탈로그 자동 생성</li>
+          <li>권한 변경 이력·외부 도구 동기화 작업 단일 트랜잭션 저장, 변경 사유 필수 기록</li>
         </ul>
         <div class="diagram" role="img" aria-label="권한 item이 권한 세트로, 권한 세트가 역할로, 역할이 소속·직무·직책·회원 상태 4축에 배정되는 흐름">
           <ol class="flow">
@@ -381,19 +396,28 @@
           </table>
         </div>
         <div class="figs"><figure class="fig"><img src="images/hgm-perm-set.webp" alt="권한 세트 관리 화면. 세트 목록과 DISC-Admin 세트에 포함된 Discord 기능 권한 체크 목록" width="1600" height="870" loading="lazy"><figcaption>권한 세트 관리 · 기능 권한을 세트 단위로 묶어 역할에 할당</figcaption></figure><figure class="fig"><img src="images/hgm-role.webp" alt="역할 상세 화면. 연결 소속·직무·직책·상태와 연결된 권한 세트 7개, 배정 회원 목록(이름·이메일 가림)" width="1600" height="870" loading="lazy"><figcaption>역할 상세 · 4축 연결 조건과 권한 세트, 조건에 맞는 회원 자동 배정</figcaption></figure></div>
-        <p class="result"><b>결과</b><span>26-2 조직개편(팀·파트 신설, 드라이브 폴더 체계 변경)을 코드 수정 없이 반영. 신규 인원 도구 권한 부여 3단계 이상 → 조직도 배정 1단계</span></p>
+        <p class="result"><b>결과</b><span>26-2 조직개편(팀·파트 신설, 드라이브 폴더 체계 변경) 코드 수정 없이 반영. 신규 인원 도구 권한 부여 3단계 이상 → 조직도 배정 1단계</span></p>
+      </div>
+
+      <div class="part">
+        <div class="part-head"><h4>플랫폼 공통 기반</h4><span class="who lead">설계·구현 주도</span></div>
+        <ul>
+          <li>정적 export 기반 공용 레이아웃·권한 게이트·도메인별 쿼리 키 체계 구축, 전 모듈 화면 공통 적용</li>
+          <li>공용 API 클라이언트: 401 토큰 갱신 요청 큐잉, FastAPI 오류 응답 화면 문구 변환</li>
+          <li>Alembic head 병합 원칙 수립, 실 PostgreSQL DDL 테스트 기반 마이그레이션 회귀 차단</li>
+        </ul>
       </div>
 
       <div class="part">
         <div class="part-head"><h4>전자결재 양식 빌더</h4><span class="who lead">요구사항 정의·프론트엔드 주도 · 백엔드 개발 참여</span></div>
         <ul>
-          <li>결재 본문을 자유 텍스트로 받자 "총액은 어떻게 받나", "선택지 항목은 어떻게 표준화하나" 문의 발생</li>
-          <li>운영팀의 결재 내역 시트 관리 니즈 → 결재 본문을 구조화된 데이터로 만드는 것이 요구사항</li>
+          <li>자유 텍스트 결재 본문으로 "총액은 어떻게 받나", "선택지 항목은 어떻게 표준화하나" 문의 발생</li>
+          <li>운영팀 결재 내역 시트 관리 니즈 → 결재 본문 데이터 구조화 요구사항 도출</li>
           <li>JSON Schema 동적 폼(RJSF) 리서치·도입 결정. 범용성 · 라이선스 · 용처 커버 기준</li>
-          <li>결재선은 고정 담당자 지정과 상위 결재선 동적 지정(팀장 → 본부장 → 부회장 → 회장)을 분리 설계</li>
+          <li>고정 담당자 지정·상위 결재선 동적 지정(팀장 → 본부장 → 부회장 → 회장) 분리 결재선 설계</li>
         </ul>
         <div class="figs"><figure class="fig"><img src="images/hgm-form.webp" alt="기안 작성 화면. 인사이동신청서 양식의 안내문과 필수 입력 항목" width="1600" height="870" loading="lazy"><figcaption>기안 작성 · 관리자가 빌더로 등록한 양식이 입력 폼으로 표시</figcaption></figure><figure class="fig"><img src="images/hgm-approval-line.webp" alt="결재선 양식 수정 화면. 기안자의 팀장·본부장 동적 결재권자와 회장·부회장 고정 직책" width="1600" height="870" loading="lazy"><figcaption>결재선 양식 · 기안자 기준 동적 결재권자와 고정 직책을 나눠 구성</figcaption></figure></div>
-        <p class="result"><b>결과</b><span>결재 양식 약 20종 전부 관리자가 빌더로 등록, 양식 추가에 개발 배포 0회. 임원진·운영팀 사용 중</span></p>
+        <p class="result"><b>결과</b><span>결재 양식 약 20종 전부 관리자 빌더 등록, 양식 추가 개발 배포 0회. 임원진·운영팀 사용 중</span></p>
       </div>
 
       <div class="part">
@@ -408,9 +432,9 @@
         <div class="part-head"><h4>회의록 AI 요약 파이프라인</h4><span class="who lead">프론트엔드 단독 구현, 백엔드 참여</span></div>
         <ul>
           <li>Discord 녹음 → STT → Gemini 요약 → Asana 태스크 등록 파이프라인 개발·운영</li>
-          <li>드라이브 업로드 실패와 요약 실패가 모두 500으로 내려와 화면에는 "실패"만 표시, 재시도 불가</li>
-          <li>상태 코드 체계 제안, 백엔드 담당자와 확정. 1단계 STT 변환과 2단계 AI 요약 분리</li>
-          <li>실패한 단계부터 다시 실행 (재변환 / 재시도 버튼 분리), 이전 설정값 유지</li>
+          <li>드라이브 업로드 실패·요약 실패 모두 500 응답 → 화면에 "실패"만 표시, 재시도 불가</li>
+          <li>상태 코드 체계 제안·백엔드 담당자와 확정, 1단계 STT 변환·2단계 AI 요약 분리</li>
+          <li>실패 단계부터 재실행 (재변환 / 재시도 버튼 분리), 이전 설정값 유지</li>
         </ul>
         <div class="diagram" role="img" aria-label="STOPPED에서 1단계 STT 변환으로 TRANSCRIBED, 2단계 AI 요약으로 SUMMARIZED가 되고 실패하면 FAILED에서 해당 단계부터 다시 실행하는 흐름">
           <ol class="flow">
@@ -421,43 +445,45 @@
           <span class="cap" style="margin:12px 0 0">처리 중 PROCESSING · 실패 시 FAILED → 1단계는 재변환, 2단계는 재시도</span>
         </div>
         <figure class="fig"><img src="images/hgm-meeting.webp" alt="회의록 요약 설정 창. 1단계 STT 변환 완료, 2단계 AI 요약 실패 표시와 목록의 재시도 버튼(작성자 가림)" width="1600" height="870" loading="lazy"><figcaption>요약 설정 · 1단계 변환은 완료, 실패한 2단계 요약만 다시 실행</figcaption></figure>
-        <p class="result"><b>결과</b><span>일시적 서버 오류 외에는 담당자 문의 없이 사용자가 직접 재시도</span></p>
+        <p class="result"><b>결과</b><span>일시적 서버 오류 외 담당자 문의 없이 사용자 직접 재시도</span></p>
       </div>
 
       <div class="part">
         <div class="part-head"><h4>팀 운영 · 개발 규칙</h4><span class="who lead">총괄 PO · 테크리드</span></div>
         <ul>
           <li>온보딩: 문서(컨벤션·코드 구조·README) → 간단 과제 → 담당 영역 이슈 assign → 코드리뷰</li>
-          <li>주 1회 1시간 회의, 회의 2시간 전 주간보고 시트(실적·계획·이슈) 작성 후 아젠다 구성</li>
+          <li>주 1회 1시간 회의, 회의 2시간 전 주간보고 시트(실적·계획·이슈) 기반 아젠다 구성</li>
           <li>FE/BE 테크리드 분리, GitHub Issue 관리 규정</li>
           <li>타인 PR 리뷰 68건, OWASP Top 10 기준 보안 검토 포함</li>
         </ul>
       </div>
 
       <div class="part">
-        <div class="part-head"><h4>AI 활용 경계</h4><span class="who shared">작업 방식</span></div>
+        <div class="part-head"><h4>AI 활용 방식</h4><span class="who shared">작업 방식</span></div>
         <ul>
-          <li>DB 설계 · 큰 화면 구조 · 폴더 구조 · 디자인 패턴은 사람, 그 안을 채우는 코드는 AI</li>
-          <li>계획 단계 설계를 AI에 맡기고 사람이 검토, 규칙 파일·금지 훅으로 경계 설정, 설계 문서를 코드와 함께 형상관리</li>
-          <li>사례: 조직도 '대표 지정'과 전자결재 연동에서 AI가 소속의 <span class="code">is_owner</span> 대신 회원의 <span class="code">is_manager</span> 참조 → 결재선 오류 → 롤백. DB 전체에 설계 의도를 적은 description을 추가해 AI가 읽는 맥락 보강</li>
+          <li>역할 경계: DB 설계 · 화면 구조 · 폴더 구조 · 디자인 패턴은 사람, 내부 구현 코드는 AI</li>
+          <li>계획 단계 설계 AI 위임·사람 검토, 규칙 파일·금지 훅 기반 경계 설정, 설계 문서 코드 동반 형상관리</li>
+          <li>코드리뷰: 팀 컨벤션·기능정의·이슈 기준 Codex 리뷰, OWASP Top 10 반영 리뷰 스킬</li>
+          <li>팀 AI 베이스 (도입 진행 중): Claude Code·Codex CLI·Antigravity CLI 공통 규칙·스킬·도메인 용어집 단일 소스, 동일 규칙 기준 PR 코드리뷰</li>
+          <li>사례: 조직도 '대표 지정'·전자결재 연동에서 AI가 소속 <span class="code">is_owner</span> 대신 회원 <span class="code">is_manager</span> 참조 → 결재선 오류 → 롤백. DB 전체 설계 의도 description 추가로 AI 참조 맥락 보강</li>
         </ul>
       </div>
     </section>
 
     <section class="block">
-      <h3>기술 결정</h3>
+      <h3>Tech Decisions</h3>
       <ul>
-        <li>정적 export(SPA) 배포: 개인 서버 운영 · AWS 이관 계획 · 적은 리소스 → 서버 부하와 배포 관리 지점 축소. 내부 서비스라 SEO 불필요</li>
-        <li>프론트 레포를 백엔드 레포에 subtree로 흡수: FE·BE를 함께 고치는 이슈가 많아 PR 분리가 불필요</li>
-        <li>React 선택: 기능 확장 가능성이 큰 제품이라 상태관리를 세밀하게 다룰 수 있는 쪽</li>
+        <li>정적 export(SPA) 배포: 개인 서버 운영 · AWS 이관 계획 · 적은 리소스 → 서버 부하와 배포 관리 지점 축소. 내부 서비스라 SEO 불필요. 서버 미들웨어 부재 → 화면 가드는 노출 제어, 실제 차단은 전 API 서버 권한 검사 담당</li>
+        <li>프론트 레포 백엔드 레포 subtree 흡수: FE·BE 동시 수정 이슈 다수 → PR 분리 불필요</li>
+        <li>React 선택: 기능 확장 가능성이 큰 제품 → 세밀한 상태관리 우선</li>
       </ul>
     </section>
 
     <section class="block">
-      <h3>한계와 배운 점</h3>
+      <h3>Retrospective</h3>
       <ul>
-        <li>사용량 데이터 없이 출시해 "얼마나 도움이 됐는가"에 수치로 답하지 못함 → Microsoft Clarity 도입</li>
-        <li>2026.08 결재선 회귀: release의 수정분을 master로 체리픽 후 상신 실패, 4시간 19분 만에 롤백. 원인은 체리픽 재검증 절차 부재</li>
+        <li>사용량 데이터 없는 출시 → "얼마나 도움이 됐는가" 수치 근거 부재 → Microsoft Clarity 도입</li>
+        <li>2026.08 결재선 회귀: release 수정분 master 체리픽 후 상신 실패, 4시간 19분 만에 롤백. 원인은 체리픽 재검증 절차 부재</li>
         <li>만드는 것과 계속 굴러가게 하는 것은 다른 일. 조직이 커지면 코드보다 역할과 기준이 먼저 병목</li>
       </ul>
     </section>
@@ -467,25 +493,25 @@
 
 <!-- ===================== 안심코드 ===================== -->
 <dialog class="case" id="dlg-ansim" aria-labelledby="t-ansim">
-  <div class="case-head"><p>PROJECT · 2026.08</p><button class="btn-close" type="button" data-close aria-label="닫기" title="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="case-head"><p>PROJECT</p><button class="btn-close" type="button" data-close aria-label="닫기" title="닫기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="case-body">
     <div class="case-title">
+      <dl class="meta">
+        <div><dt>Period</dt><dd>2026.08 · 8일 (실투입 3일)</dd></div>
+        <div><dt>Position</dt><dd>풀스택 개발 · AI 위임 개발 설계</dd></div>
+        <div><dt>Source</dt><dd>저장소 2개 전부 공개</dd></div>
+        <div class="wide"><dt>Stack</dt><dd><ul class="chips"><li>Claude Code</li><li>Semgrep CE</li><li>gitleaks</li><li>OSV.dev</li><li>Gemini API</li></ul></dd></div>
+      </dl>
       <p class="badge">2026 ICT 표준 챌린지 출품</p>
       <h2 id="t-ansim">안심코드</h2>
       <p class="one">Git 주소 하나로 TTA 국가표준 조항 기준 안전등급을 진단하는 소스코드 자가진단 서비스. AI에 개발을 위임하고, 그 결과를 AI가 스스로 채점하지 못하게 검증 구조를 함께 설계</p>
-      <dl class="meta">
-        <div><dt>기간</dt><dd>2026.08 · 8일 (실투입 3일)</dd></div>
-        <div><dt>역할</dt><dd>풀스택 개발 · AI 위임 개발 설계</dd></div>
-        <div><dt>공개</dt><dd>저장소 2개 전부 공개</dd></div>
-        <div class="wide"><dt>기술</dt><dd><ul class="chips"><li>Claude Code</li><li>Semgrep CE</li><li>gitleaks</li><li>OSV.dev</li><li>Gemini API</li></ul></dd></div>
-      </dl>
       <p class="repos"><a class="repo" href="https://github.com/fmaPark/ansim-code" target="_blank" rel="noopener noreferrer"><svg class="gh" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>ansim-code</span><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a><a class="repo" href="https://github.com/fmaPark/ansim-benchmark" target="_blank" rel="noopener noreferrer"><svg class="gh" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>ansim-benchmark</span><svg class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></p>
     </div>
 
     <section class="block media" data-tabs>
       <div class="tabs" role="tablist" aria-label="안심코드 서비스 화면과 아키텍처">
-        <button type="button" role="tab" id="ansim-tab-shots" aria-controls="ansim-panel-shots" aria-selected="true">서비스 화면</button>
-        <button type="button" role="tab" id="ansim-tab-arch" aria-controls="ansim-panel-arch" aria-selected="false" tabindex="-1">아키텍처</button>
+        <button type="button" role="tab" id="ansim-tab-shots" aria-controls="ansim-panel-shots" aria-selected="true">Screens</button>
+        <button type="button" role="tab" id="ansim-tab-arch" aria-controls="ansim-panel-arch" aria-selected="false" tabindex="-1">Architecture</button>
       </div>
       <div class="tab-panel" role="tabpanel" id="ansim-panel-shots" aria-labelledby="ansim-tab-shots">
         <div class="gallery">
@@ -532,7 +558,7 @@
     </section>
 
     <section class="block">
-      <h3>핵심 구현</h3>
+      <h3>Highlights</h3>
       <ul class="keys">
         <li><b>진단 파이프라인</b>: 격리 수집 → SBOM 생성 → 취약점 대조 → 정적 룰 → 등급 → 리포트, 원본 코드는 어떤 실패 경로에서도 파기</li>
         <li><b>LLM 신뢰 경계</b>: 등급은 정적 분석·CVE 결과로만 산정, LLM 판정은 '검토 필요'로 분리, 시크릿은 LLM 미전송</li>
@@ -542,7 +568,7 @@
     </section>
 
     <section class="block">
-      <h3>결과</h3>
+      <h3>Results</h3>
       <div class="stats">
         <div class="stat"><b>오탐 0건</b><span>결함 없는 표본 11개 기준 (자가 측정)</span></div>
         <div class="stat"><b>202건</b><span>자동화 테스트 통과</span></div>
@@ -551,7 +577,7 @@
     </section>
 
     <section class="block deep">
-      <h3>내가 한 일</h3>
+      <h3>Role</h3>
       <div class="part">
         <div class="part-head"><h4>위임하는 구조</h4><span class="who lead">프로세스 제안·수행 · 설계 문서는 기획 팀원과 공동</span></div>
         <ul>
@@ -580,7 +606,7 @@
     </section>
 
     <section class="block">
-      <h3>한계와 배운 점</h3>
+      <h3>Retrospective</h3>
       <ul>
         <li>공공데이터 실물이 표본으로 가정한 형식과 달라 해당 룰의 측정치 무효 처리. 표본 기반 수치에는 처음부터 표본 기준임을 표시했어야 함</li>
         <li>인젝션 시험 회차에 LLM 판정이 실행되지 않아, 증명된 것은 LLM이 실패해도 등급이 정상 산출되는 구조까지</li>
