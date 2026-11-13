@@ -265,6 +265,7 @@ dialog.case::backdrop { background: rgba(8, 12, 10, .56); }
 .part:last-child { padding-bottom: 0; }
 .part-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; }
 .part-head h4 { font-size: 17px; font-weight: 600; }
+.part .lede { margin: 0; font-size: 14.5px; color: var(--ink-2); }
 .who { font: 11.5px/1 var(--font-mono); padding: 5px 7px; border-radius: 3px; white-space: nowrap; }
 .who.solo { background: var(--seal-soft); color: var(--seal); }
 .who.lead { border: 1px solid var(--seal); color: var(--seal); }
