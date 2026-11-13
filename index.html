@@ -345,23 +345,33 @@ flowchart TB
 
     <section class="block">
       <h3>Highlights</h3>
-      <ul class="keys">
-        <li><b>플랫폼 총괄</b>: 요구사항 정의(RFP) 기반으로 스택 선정·배포 및 운영 방식 결정. 지속적인 배포와 유지보수가 가능한 형상관리 원칙 수립</li>
-        <li><b>프론트엔드 공통 기반</b>: 정적 export 기반 공용 레이아웃·권한 게이트·API 클라이언트·도메인별 쿼리 키 체계 구축</li>
-        <li><b>회원·권한 관리 모듈</b>: 전 모듈 공통 RBAC 인가 계층 구축: 권한 단위 API 접근·메뉴 노출 동시 제어, 조직 배정 변경 시 Discord·Google Drive·Plane 권한 자동 전파</li>
-        <li><b>전자결재 모듈</b>: JSON Schema 동적 양식 빌더 기반 결재 본문 구조화, 고정·동적 결재선 분리</li>
-        <li><b>회의록 모듈</b>: Discord 녹음 → STT → Gemini 요약 → Asana 등록 AI 요약 파이프라인 개발, 단계별 상태 기반 실패 지점 재시도</li>
-        <li><b>학습 모듈</b>: 조직도 역할 기반 추천 학습, XP·배지·레벨 등 단독 구현</li>
+      <ul class="keys heads">
+        <li><b>조직도 하나로 서비스 안팎의 권한을 관리하는 구조 설계</b><span>회원을 조직도에 배정하는 것만으로 서비스 권한과 Discord·Google Drive·Plane 권한까지 자동 부여</span></li>
+        <li><b>팀 공통 AI 개발 체계 설계 <em class="status">도입 진행 중</em></b><span>어떤 AI 도구를 쓰든 같은 규칙으로 개발하고, 같은 규칙으로 코드리뷰를 받는 구조</span></li>
+        <li><b>요구사항 정의부터 배포·운영까지 총괄</b><span>요구사항 정의(RFP) 기반으로 스택 선정·배포 및 운영 방식 결정. 지속적인 배포와 유지보수가 가능한 형상관리 원칙 수립</span></li>
       </ul>
     </section>
 
     <section class="block">
-      <h3>Results</h3>
-      <div class="stats">
-        <div class="stat"><b>약 70명</b><span>사용 대상 동아리 규모</span></div>
-        <div class="stat"><b>20종 · 배포 0회</b><span>관리자가 직접 등록한 결재 양식</span></div>
-        <div class="stat"><b>코드 수정 0</b><span>26-2 조직개편 반영 (회원·권한)</span></div>
-        <div class="stat"><b>3단계+ → 1단계</b><span>신규 인원 도구 권한 부여</span></div>
+      <h3>Team AI Base</h3>
+      <div class="part">
+        <div class="part-head"><h4>팀 공통 AI 개발 체계 <em class="status">도입 진행 중</em></h4><span class="who lead">제안·총괄 · 프론트엔드 규칙 담당</span></div>
+        <p class="lede">팀원마다 쓰는 AI 도구와 활용 방식이 달라 코드 품질이 들쭉날쭉하고, 코드리뷰가 개발 속도의 병목이 된 문제에서 출발</p>
+        <p class="core">규칙을 한곳에 모으고, 모든 AI 도구와 리뷰 봇이 같은 규칙을 읽게 하는 구조</p>
+        <ul>
+          <li>개발 규칙·스킬·도메인 용어집을 별도 저장소 하나로 관리하고 서비스 저장소에 연결</li>
+          <li>도구마다 규칙 파일 형식이 달라, 원본 하나에서 도구별 규칙 파일을 자동 생성하는 방식 채택</li>
+          <li>규칙 변경도 PR 리뷰를 거쳐 반영하고, PR 리뷰 봇도 같은 규칙으로 리뷰</li>
+        </ul>
+        <div class="diagram" role="img" aria-label="팀 규칙 저장소의 원본에서 도구별 규칙 파일을 자동 생성해 Claude Code, Codex CLI, Antigravity CLI가 같은 규칙을 읽고, PR 리뷰 봇도 같은 원본으로 리뷰하는 구조">
+          <ol class="flow">
+            <li><span>팀 규칙 저장소<small>규칙 · 스킬 · 용어집 원본</small></span></li>
+            <li><span>도구별 규칙 파일<small>자동 생성</small></span></li>
+            <li class="hl"><span>AI 도구 3종<small>Claude Code · Codex CLI · Antigravity CLI</small></span></li>
+          </ol>
+          <span class="cap" style="margin:12px 0 0">같은 원본 → PR 리뷰 봇도 같은 규칙으로 리뷰</span>
+        </div>
+        <p class="note">현재 파트별 규칙 작성 단계, 팀 적용 전</p>
       </div>
     </section>
 
@@ -370,21 +380,23 @@ flowchart TB
 
       <div class="part">
         <div class="part-head"><h4>플랫폼 공통 기반</h4><span class="who lead">설계·구현 주도</span></div>
+        <p class="lede">모든 모듈 화면이 같은 레이아웃·권한 처리·API 호출 방식 위에서 동작하도록 만든 프론트엔드 기반</p>
         <ul>
-          <li>정적 export 기반 공용 레이아웃·권한 게이트·도메인별 쿼리 키 체계 구축, 전 모듈 화면 공통 적용</li>
-          <li>공용 API 클라이언트: 401 토큰 갱신 요청 큐잉, FastAPI 오류 응답 화면 문구 변환</li>
+          <li>공용 레이아웃과 권한별 화면 노출 처리를 만들어 모든 모듈 화면에 공통 적용</li>
+          <li>API 호출 공통 처리: 로그인 만료 시 자동 재인증, 서버 오류를 사용자가 읽을 수 있는 문구로 변환</li>
           <li>HTTP Status 공통 규약 수립, React/typescript 팀 컨벤션 제정</li>
         </ul>
       </div>
 
       <div class="part">
-        <div class="part-head"><h4>회원·권한 관리</h4><span class="who lead">설계·구현 주도</span></div>
+        <div class="part-head"><h4>회원·권한 관리</h4><span class="who lead">프론트엔드 단독 구현, 백엔드 참여</span></div>
+        <p class="lede">회원 정보·조직도·권한을 한곳에서 관리하는 모듈. 다른 모든 모듈이 이 권한 체계를 따름</p>
         <ul>
           <li>운영팀의 실제 관리 방식을 조사해 기능 설계 (명단, 조직도 배정, 직책·직무, 경고·출석)</li>
           <li>소속 · 직무 · 직책 · 회원 상태에 따른 RBAC 권한 부여</li>
-          <li>조직도 단위 외부 도구 연결: 노드별 Google Drive 폴더·Plane 프로젝트 지정, 회원 배정 시 Discord 역할·Drive 공유·Plane 멤버십 자동 부여. 기존에는 신규 인원마다 도구별·폴더별 수동 배정</li>
+          <li>조직도의 팀·파트마다 Google Drive 폴더와 Plane 프로젝트를 연결해, 회원을 배정하면 외부 도구 권한까지 자동 부여</li>
           <li>API 권한과 화면 컴포넌트 묶은 기능 단위 권한 item을 설계하여 유저별 허용 권한 부여</li>
-          <li>전 모듈 API 공통 권한 검사 구조 설계, 라우트 선언 기반 권한별 API 카탈로그 자동 생성</li>
+          <li>모든 모듈 API가 같은 권한 검사를 거치도록 설계하고, 권한별 접근 가능한 API 목록 자동 생성</li>
           <li>권한 변경 이력·외부 도구 동기화 작업 단일 트랜잭션 저장, 변경 사유 로깅 및 모니터링</li>
         </ul>
         <div class="diagram" role="img" aria-label="권한 item이 권한 세트로, 권한 세트가 역할로, 역할이 소속·직무·직책·회원 상태 4축에 배정되는 흐름">
@@ -396,39 +408,39 @@ flowchart TB
           </ol>
         </div>
         <div class="figs"><figure class="fig"><img src="images/hgm-perm-set.webp" alt="권한 세트 관리 화면. 세트 목록과 DISC-Admin 세트에 포함된 Discord 기능 권한 체크 목록" width="1600" height="870" loading="lazy"><figcaption>권한 세트 관리 · 기능 권한을 세트 단위로 묶어 역할에 할당</figcaption></figure><figure class="fig"><img src="images/hgm-role.webp" alt="역할 상세 화면. 연결 소속·직무·직책·상태와 연결된 권한 세트 7개, 배정 회원 목록(이름·이메일 가림)" width="1600" height="870" loading="lazy"><figcaption>역할 상세 · 조건에 맞는 회원에게 권한 자동 배정</figcaption></figure><figure class="fig"><img src="images/hgm-org.webp" alt="조직도 관리 화면. 회기동 막걸리 아래 본부·팀·파트 트리와 플랫폼 엔지니어링 파트 상세: 대표, 회의 녹음·회원 권한 Google Drive 폴더, Plane 설정, 구성원 8명(이름 가림)" width="1600" height="777" loading="lazy"><figcaption>조직도 관리 · 파트마다 Drive 폴더·Plane을 연결해 두고, 구성원으로 배정하면 외부 도구 권한까지 함께 부여</figcaption></figure></div>
-        <p class="result"><b>결과</b><span>26-2 조직개편(팀·파트 신설, 드라이브 폴더 체계 변경) 코드 수정 없이 반영. 신규 인원 도구 권한 부여 3단계 이상 → 조직도 배정 1단계</span></p>
+        <p class="result"><b>결과</b><span>조직 개편(팀·파트 신설, 드라이브 폴더 체계 변경)을 코드 수정 없이 설정 변경만으로 반영. 신규 인원마다 도구별로 하던 수동 권한 부여를 조직도 배정 한 번으로 대체</span></p>
       </div>
 
       <div class="part">
-        <div class="part-head"><h4>전자결재</h4><span class="who lead">요구사항 정의·프론트엔드 주도 · 백엔드 개발 참여</span></div>
-        <p class="lede">카카오워크 유료화로 대체한 기안·결재 모듈. 임원진·운영팀 사용 중</p>
+        <div class="part-head"><h4>전자결재</h4><span class="who lead">요구사항 정의 · 프론트엔드 단독 구현, 백엔드 참여</span></div>
+        <p class="lede">유료화된 카카오워크를 대체한 기안·결재 모듈. 임원진과 운영팀이 사용 중</p>
         <ul>
-          <li>요구사항 정의: 카카오워크 결재 이력 166건 전수조사 → 상신·승인·회수·공람 우선, 협조·대결·위임 후순위</li>
-          <li>결재선 설계: 고정 담당자 지정·기안자 기준 동적 지정(팀장 → 본부장 → 부회장 → 회장) 분리</li>
-          <li>양식 빌더: 자유 텍스트 본문 집계·검증 불가 → JSON Schema 동적 폼(RJSF) 도입, 결재 본문 데이터화</li>
+          <li>카카오워크 결재 이력 166건을 전수조사해 자주 쓰는 기능(상신·승인·회수·공람)부터 구현, 거의 쓰지 않는 기능(협조·대결·위임)은 후순위로 조정</li>
+          <li>결재선을 고정 담당자와 기안자 기준 상위자(팀장 → 본부장 → 부회장 → 회장)로 나눠 설계</li>
+          <li>자유 텍스트 결재 본문은 금액 집계·항목 검증이 불가능해, JSON Schema 동적 폼(RJSF)으로 결재 본문을 데이터화</li>
         </ul>
         <div class="figs"><figure class="fig"><img src="images/hgm-form.webp" alt="기안 작성 화면. 인사이동신청서 양식의 안내문과 필수 입력 항목" width="1600" height="870" loading="lazy"><figcaption>기안 작성 · 관리자가 빌더로 등록한 양식이 입력 폼으로 표시</figcaption></figure><figure class="fig"><img src="images/hgm-approval-line.webp" alt="결재선 양식 수정 화면. 기안자의 팀장·본부장 동적 결재권자와 회장·부회장 고정 직책" width="1600" height="870" loading="lazy"><figcaption>결재선 양식 · 기안자 기준 동적 결재권자와 고정 직책을 나눠 구성</figcaption></figure></div>
-        <p class="result"><b>결과</b><span>결재 양식 약 20종 전부 관리자 빌더 등록, 양식 추가 개발 배포 0회</span></p>
+        <p class="result"><b>결과</b><span>운영자가 결재 양식을 직접 추가·수정, 양식 변경에 개발 배포 불필요</span></p>
       </div>
 
       <div class="part">
         <div class="part-head"><h4>학습(LMS)</h4><span class="who solo">단독 구현</span></div>
-        <p class="lede">동아리 교육 과정(교육·수료)을 플랫폼으로 옮긴 사내 학습 모듈</p>
+        <p class="lede">동아리 교육 과정을 플랫폼으로 옮긴 사내 학습 모듈. DB 설계부터 화면까지 약 한 달 단독 구현</p>
         <ul>
-          <li>조직도 연동: 직무·직책 기준 학습 대상 지정, 역할별 필수·심화 학습 경로 추천</li>
-          <li>운영 흐름: 콘텐츠 저작 → 검토 요청 → 게시 승인, 지식 리비전 관리</li>
-          <li>참여 장치: 진도·수료, XP·배지·레벨, 운영자 통계</li>
-          <li>약 한 달, DB 스키마부터 화면까지 단독 구현: 테이블 13 · 엔드포인트 55 · 화면 라우트 17</li>
+          <li>조직도의 직무·직책에 맞춰 필수·심화 학습 경로 자동 추천</li>
+          <li>콘텐츠 작성 → 검토 요청 → 게시 승인 흐름과 수정 이력 관리</li>
+          <li>진도·수료, XP·배지·레벨로 학습 참여 유도</li>
         </ul>
+        <div class="figs"><figure class="fig"><img src="images/hgm-learn-role.webp" alt="내 역할 화면. 배정된 조직(운영 본부, 인프라)과 그에 맞춰 추천된 필수 학습 과정 5개(동아리 첫걸음, 일 잘하는 방법, 정보 보안·개인정보 보호, 협업 도구 온보딩, 회칙 핵심)" width="1525" height="784" loading="lazy"><figcaption>내 역할 · 조직도에 배정된 소속과 직책을 기준으로 필수 학습 과정 추천</figcaption></figure><figure class="fig"><img src="images/hgm-learn-content.webp" alt="콘텐츠 목록 화면. 학습 콘텐츠별 작성자(가림), 게시 상태, 버전, 검토 요청, 최종 수정일" width="1525" height="784" loading="lazy"><figcaption>콘텐츠 목록 · 콘텐츠마다 게시 상태·버전·검토 요청을 관리</figcaption></figure></div>
       </div>
 
       <div class="part">
         <div class="part-head"><h4>회의록</h4><span class="who lead">프론트엔드 단독 구현, 백엔드 참여</span></div>
-        <p class="lede">Discord 회의 녹음을 STT·Gemini로 요약해 Asana 태스크까지 등록하는 모듈</p>
+        <p class="lede">Discord 회의 녹음을 STT와 Gemini로 요약해 Asana 태스크까지 등록하는 모듈</p>
         <ul>
-          <li>문제: 드라이브 업로드 실패·요약 실패 모두 500 응답 → 화면에 "실패"만 표시, 원인 확인·재시도는 담당자 문의</li>
-          <li>상태 체계 제안·백엔드 담당자와 확정: 1단계 STT 변환·2단계 AI 요약 분리</li>
-          <li>재시도 화면 설계·구현: 실패 단계부터 재실행 (재변환 / 재시도), 이전 설정값 유지</li>
+          <li>업로드 실패와 요약 실패가 같은 서버 오류(500)로 내려와, 사용자는 원인을 모른 채 담당자에게 문의</li>
+          <li>처리 상태를 'STT 변환'과 'AI 요약' 두 단계로 나누는 체계를 제안해 백엔드 담당자와 확정</li>
+          <li>실패한 단계부터 다시 실행하는 화면 설계·구현, 이전 설정값 유지</li>
         </ul>
         <div class="diagram" role="img" aria-label="STOPPED에서 1단계 STT 변환으로 TRANSCRIBED, 2단계 AI 요약으로 SUMMARIZED가 되고 실패하면 FAILED에서 해당 단계부터 다시 실행하는 흐름">
           <ol class="flow">
@@ -439,48 +451,45 @@ flowchart TB
           <span class="cap" style="margin:12px 0 0">처리 중 PROCESSING · 실패 시 FAILED → 1단계는 재변환, 2단계는 재시도</span>
         </div>
         <figure class="fig"><img src="images/hgm-meeting.webp" alt="회의록 요약 설정 창. 1단계 STT 변환 완료, 2단계 AI 요약 실패 표시와 목록의 재시도 버튼(작성자 가림)" width="1600" height="870" loading="lazy"><figcaption>요약 설정 · 1단계 변환은 완료, 실패한 2단계 요약만 다시 실행</figcaption></figure>
-        <p class="result"><b>결과</b><span>일시적 서버 오류 외 담당자 문의 없이 사용자 직접 재시도</span></p>
+        <p class="result"><b>결과</b><span>일시적 서버 오류를 제외하면 사용자가 담당자 문의 없이 직접 재시도</span></p>
       </div>
     </section>
 
-    <section class="block deep">
+    <section class="block deep minor">
       <h3>How We Build</h3>
-
       <div class="part">
         <div class="part-head"><h4>팀 운영</h4><span class="who lead">총괄 PO · 테크리드</span></div>
         <ul>
-          <li>온보딩: 문서(컨벤션·코드 구조·README) → 간단 과제 → 담당 영역 이슈 assign → 코드리뷰</li>
-          <li>주간보고 시트(실적·계획·이슈) 사전 작성 체계: 다른 업무를 겸하는 팀원 간 진행 상황 비동기 공유, 회의는 이슈 해결·의사결정 중심으로 운영</li>
-          <li>release/master 분리·stage 서버 기반 QA 기준 수립</li>
-          <li>타인 PR 리뷰 68건, OWASP Top 10 기준 보안 검토 포함</li>
+          <li>온보딩을 문서 → 간단한 과제 → 담당 영역 이슈 → 코드리뷰 순서로 체계화</li>
+          <li>회의 전 주간보고 시트 작성 체계: 다른 업무를 겸하는 팀원들이 진행 상황을 미리 공유하고, 회의는 이슈 해결과 결정에 집중</li>
+          <li>release·master 브랜치와 stage 서버를 분리해 QA 통과 기준 수립</li>
+          <li>팀원 PR 리뷰 주도, OWASP Top 10 기준 보안 검토 포함</li>
         </ul>
       </div>
-
       <div class="part">
         <div class="part-head"><h4>AI 활용</h4><span class="who shared">작업 방식</span></div>
         <ul>
-          <li>역할 경계: DB 설계 · 화면 구조 · 폴더 구조 · 디자인 패턴은 사람, 내부 구현 코드는 AI</li>
-          <li>계획 단계 설계 AI 위임·사람 검토, 규칙 파일·금지 훅 기반 경계 설정, 설계 문서 코드 동반 형상관리</li>
-          <li>코드리뷰: 팀 컨벤션·기능정의·이슈 기준 Codex 리뷰, OWASP Top 10 반영 리뷰 스킬</li>
-          <li>팀 AI 베이스 (도입 진행 중): Claude Code·Codex CLI·Antigravity CLI 공통 규칙·스킬·도메인 용어집 단일 소스, 동일 규칙 기준 PR 코드리뷰</li>
+          <li>DB 설계·화면 구조·디자인 패턴은 사람이 정하고, 그 안의 구현 코드는 AI에 위임</li>
+          <li>AI가 세운 설계는 사람이 검토하고, 규칙 파일과 금지 훅으로 AI 작업 범위 제한</li>
+          <li>Codex 코드리뷰에 OWASP Top 10 기준 리뷰 스킬 적용</li>
         </ul>
       </div>
     </section>
 
-    <section class="block">
+    <section class="block minor">
       <h3>Tech Decisions</h3>
       <ul>
-        <li>정적 export(SPA) 배포: 개인 서버 운영 · AWS 이관 계획 · 적은 리소스 → 서버 부하와 배포 관리 지점 축소. 내부 서비스라 SEO 불필요. 서버 미들웨어 부재 → 화면 가드는 노출 제어, 실제 차단은 전 API 서버 권한 검사 담당</li>
-        <li>프론트 레포 백엔드 레포 subtree 흡수: FE·BE 동시 수정 이슈 다수 → PR 분리 불필요</li>
-        <li>React 선택: 기능 확장 가능성이 큰 제품 → 세밀한 상태관리 우선</li>
+        <li>정적 export(SPA) 배포: 개인 서버에서 적은 리소스로 운영해야 해 서버 부하와 배포 관리 지점을 줄이는 쪽 선택. 내부 서비스라 SEO 불필요. 서버 미들웨어가 없어 화면은 노출만 제어하고, 실제 차단은 API 권한 검사가 담당</li>
+        <li>프론트 저장소를 백엔드 저장소에 통합: 프론트·백엔드를 함께 고치는 이슈가 많아 PR을 나눌 이유가 없었음</li>
+        <li>React 선택: 기능이 계속 늘어날 제품이라 상태관리를 세밀하게 다룰 수 있는 쪽 선택</li>
       </ul>
     </section>
 
-    <section class="block">
+    <section class="block minor">
       <h3>Retrospective</h3>
       <ul>
-        <li>사용량 데이터 없는 출시 → "얼마나 도움이 됐는가" 수치 근거 부재 → Microsoft Clarity 도입</li>
-        <li>2026.08 결재선 회귀: release 수정분 master 체리픽 후 상신 실패, 4시간 19분 만에 롤백. 원인은 체리픽 재검증 절차 부재</li>
+        <li>사용량 데이터 없이 출시해 "얼마나 도움이 됐나"에 수치로 답하지 못함 → Microsoft Clarity 도입</li>
+        <li>2026.08 결재선 회귀: release의 수정분을 master로 옮긴 뒤 상신이 실패해 4시간 19분 만에 롤백. 옮길 때 다시 검증하는 절차가 없었던 것이 원인</li>
         <li>만드는 것과 계속 굴러가게 하는 것은 다른 일. 조직이 커지면 코드보다 역할과 기준이 먼저 병목</li>
       </ul>
     </section>
