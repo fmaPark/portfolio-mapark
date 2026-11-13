@@ -65,6 +65,7 @@
     if (!d || d.open) return;
     if (typeof d.showModal === 'function') d.showModal(); else d.setAttribute('open', '');
     d.scrollTop = 0;
+    d.querySelectorAll('.stats').forEach(fitStats);
   }
   document.querySelectorAll('[data-open]').forEach(function (btn) {
     btn.addEventListener('click', function () { open(btn.getAttribute('data-open')); });
@@ -76,6 +77,130 @@
   });
   var hash = (location.hash || '').replace('#', '');
   if (dialogs[hash]) open(hash);
+
+  /* 상세 창: 결과 수치를 한 줄로 맞춘다. 묶음 안에서 가장 긴 수치에 맞춰 같은 비율로 줄인다 */
+  function fitStats(group) {
+    [['b', 24, 10]].forEach(function (cfg) {
+      var els = Array.prototype.slice.call(group.querySelectorAll('.stat > ' + cfg[0]));
+      els.forEach(function (e) { e.style.fontSize = ''; });
+      var ratio = 1;
+      els.forEach(function (e) {
+        if (!e.clientWidth) return;
+        var r = document.createRange(); r.selectNodeContents(e);
+        var text = r.getBoundingClientRect().width; /* 소수점까지 잰 실제 글자 폭 */
+        if (text > e.clientWidth - 1) ratio = Math.min(ratio, (e.clientWidth - 2) / text);
+      });
+      if (ratio < 1) {
+        var size = Math.max(cfg[2], Math.floor(cfg[1] * ratio * 10) / 10);
+        els.forEach(function (e) { e.style.fontSize = size + 'px'; });
+      }
+    });
+  }
+  var statGroups = Array.prototype.slice.call(document.querySelectorAll('.stats'));
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(function (entries) { entries.forEach(function (en) { fitStats(en.target); }); });
+    statGroups.forEach(function (g) { ro.observe(g); });
+  }
+  Object.keys(dialogs).forEach(function (k) {
+    dialogs[k].addEventListener('toggle', function () { if (dialogs[k].open) dialogs[k].querySelectorAll('.stats').forEach(fitStats); });
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { statGroups.forEach(fitStats); });
+
+  /* 상세 창: 아키텍처 다이어그램(Mermaid). 탭을 처음 열 때 불러오고, 테마가 바뀌면 다시 그린다 */
+  var MERMAID_SRC = 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js';
+  var root = document.documentElement, mermaidLoading = null, mmdSeq = 0;
+  function loadMermaid() {
+    if (window.mermaid) return Promise.resolve(window.mermaid);
+    if (!mermaidLoading) {
+      mermaidLoading = new Promise(function (resolve, reject) {
+        var sc = document.createElement('script');
+        sc.src = MERMAID_SRC; sc.async = true;
+        sc.onload = function () { resolve(window.mermaid); };
+        sc.onerror = function () { mermaidLoading = null; reject(new Error('mermaid load failed')); };
+        document.head.appendChild(sc);
+      });
+    }
+    return mermaidLoading;
+  }
+  function themeVars() {
+    var cs = getComputedStyle(root);
+    function v(n) { return cs.getPropertyValue(n).trim(); }
+    return {
+      fontFamily: v('--font-body'), fontSize: '13px',
+      background: v('--tint'), primaryColor: v('--sheet'), primaryTextColor: v('--ink'), primaryBorderColor: v('--ink-2'),
+      secondaryColor: v('--tint'), tertiaryColor: v('--tint'), lineColor: v('--ink-2'), textColor: v('--ink'),
+      clusterBkg: v('--paper'), clusterBorder: v('--rule'), titleColor: v('--ink-2'), edgeLabelBackground: v('--tint'),
+      hl: v('--seal'), hlSoft: v('--seal-soft')
+    };
+  }
+  function renderDiagrams(scope) {
+    var boxes = Array.prototype.slice.call((scope || document).querySelectorAll('.mmd'));
+    boxes = boxes.filter(function (b) { return !b.closest('[hidden]'); });
+    if (!boxes.length) return;
+    loadMermaid().then(function (mermaid) {
+      var t = themeVars();
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: 'base', themeVariables: t, flowchart: { curve: 'basis', padding: 12, nodeSpacing: 28, rankSpacing: 46 } });
+      boxes.forEach(function (box) {
+        var mode = root.getAttribute('data-theme') || (mq && mq.matches ? 'dark' : 'light');
+        if (box.getAttribute('data-rendered') === mode) return;
+        var src = document.getElementById(box.getAttribute('data-mmd')).textContent +
+          '\n  classDef hl fill:' + t.hlSoft + ',stroke:' + t.hl + ',stroke-width:1.5px,color:' + t.primaryTextColor;
+        mermaid.render('mmd-svg-' + (++mmdSeq), src).then(function (out) {
+          box.innerHTML = out.svg;
+          var svg = box.querySelector('svg');
+          if (svg) svg.setAttribute('aria-hidden', 'true');
+          box.setAttribute('data-rendered', mode);
+        }, function () { box.innerHTML = '<p class="mmd-msg">다이어그램을 그리지 못했습니다</p>'; });
+      });
+    }, function () {
+      boxes.forEach(function (box) { box.innerHTML = '<p class="mmd-msg">다이어그램을 불러오지 못했습니다. 네트워크 연결을 확인해 주세요</p>'; });
+    });
+  }
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function rerender() { renderDiagrams(document); }
+  if (window.MutationObserver) new MutationObserver(rerender).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  if (mq) { if (mq.addEventListener) mq.addEventListener('change', rerender); else if (mq.addListener) mq.addListener(rerender); }
+
+  /* 상세 창: 서비스 화면 / 아키텍처 탭 */
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.setAttribute('tabindex', on ? '0' : '-1');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) { panel.hidden = !on; if (on) renderDiagrams(panel); }
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') n = tabs[0];
+        else if (e.key === 'End') n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+  });
+
+  /* 상세 창: 썸네일을 누르면 큰 이미지 교체 */
+  document.querySelectorAll('.gallery').forEach(function (g) {
+    var big = g.querySelector('.viewer img');
+    var btns = Array.prototype.slice.call(g.querySelectorAll('.thumbs button'));
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var thumb = b.querySelector('img');
+        big.src = b.getAttribute('data-src');
+        big.alt = b.getAttribute('data-alt');
+        if (thumb) { big.setAttribute('width', thumb.getAttribute('width')); big.setAttribute('height', thumb.getAttribute('height')); }
+        btns.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      });
+    });
+  });
 
   var copyBtn = document.getElementById('copy-email');
   var email = document.getElementById('email');
