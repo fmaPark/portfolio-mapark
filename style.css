@@ -230,11 +230,12 @@ dialog.case::backdrop { background: rgba(8, 12, 10, .56); }
 .case-title { display: grid; gap: 12px; }
 .case-title h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 40px); line-height: 1.15; }
 .case-title .one { font-size: 17px; }
-.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px 20px; border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.meta { display: flex; flex-wrap: wrap; gap: 12px 20px; border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.meta > div { flex: 1 1 180px; min-width: 0; }
 .meta dt { font: 11.5px/1.4 var(--font-mono); color: var(--ink-2); letter-spacing: .05em; text-transform: uppercase; }
 .meta dd { margin: 2px 0 0; font-size: 14px; }
 .badge { justify-self: start; font: 600 12px/1 var(--font-body); color: var(--seal); background: var(--seal-soft); border-radius: 999px; padding: 7px 12px; }
-.meta .wide { grid-column: 1 / -1; }
+.meta > .wide { flex-basis: 100%; }
 .case-title > .meta:first-child { padding-top: 0; padding-bottom: 18px; margin-bottom: 10px; }
 .meta .wide .chips { margin-top: 4px; }
 .block { display: grid; gap: 14px; }
